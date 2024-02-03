@@ -46,9 +46,8 @@
             // 
             // bookImg
             // 
-            this.bookImg.Dock = System.Windows.Forms.DockStyle.Left;
             this.bookImg.Image = global::LMS.Properties.Resources.book;
-            this.bookImg.Location = new System.Drawing.Point(10, 10);
+            this.bookImg.Location = new System.Drawing.Point(64, 10);
             this.bookImg.Name = "bookImg";
             this.bookImg.Size = new System.Drawing.Size(137, 162);
             this.bookImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -58,7 +57,7 @@
             // titleLbl
             // 
             this.titleLbl.AutoSize = true;
-            this.titleLbl.Location = new System.Drawing.Point(232, 18);
+            this.titleLbl.Location = new System.Drawing.Point(286, 18);
             this.titleLbl.Name = "titleLbl";
             this.titleLbl.Size = new System.Drawing.Size(85, 21);
             this.titleLbl.TabIndex = 1;
@@ -67,7 +66,7 @@
             // isbnLbl
             // 
             this.isbnLbl.AutoSize = true;
-            this.isbnLbl.Location = new System.Drawing.Point(232, 60);
+            this.isbnLbl.Location = new System.Drawing.Point(286, 60);
             this.isbnLbl.Name = "isbnLbl";
             this.isbnLbl.Size = new System.Drawing.Size(51, 21);
             this.isbnLbl.TabIndex = 2;
@@ -76,7 +75,7 @@
             // authorLbl
             // 
             this.authorLbl.AutoSize = true;
-            this.authorLbl.Location = new System.Drawing.Point(232, 102);
+            this.authorLbl.Location = new System.Drawing.Point(286, 102);
             this.authorLbl.Name = "authorLbl";
             this.authorLbl.Size = new System.Drawing.Size(65, 21);
             this.authorLbl.TabIndex = 3;
@@ -85,7 +84,7 @@
             // publishedYear
             // 
             this.publishedYear.AutoSize = true;
-            this.publishedYear.Location = new System.Drawing.Point(232, 145);
+            this.publishedYear.Location = new System.Drawing.Point(286, 145);
             this.publishedYear.Name = "publishedYear";
             this.publishedYear.Size = new System.Drawing.Size(119, 21);
             this.publishedYear.TabIndex = 4;
@@ -94,7 +93,7 @@
             // issuedDateLbl
             // 
             this.issuedDateLbl.AutoSize = true;
-            this.issuedDateLbl.Location = new System.Drawing.Point(722, 18);
+            this.issuedDateLbl.Location = new System.Drawing.Point(776, 18);
             this.issuedDateLbl.Name = "issuedDateLbl";
             this.issuedDateLbl.Size = new System.Drawing.Size(121, 21);
             this.issuedDateLbl.TabIndex = 5;
@@ -103,7 +102,7 @@
             // returnDateLbl
             // 
             this.returnDateLbl.AutoSize = true;
-            this.returnDateLbl.Location = new System.Drawing.Point(722, 102);
+            this.returnDateLbl.Location = new System.Drawing.Point(776, 102);
             this.returnDateLbl.Name = "returnDateLbl";
             this.returnDateLbl.Size = new System.Drawing.Size(100, 21);
             this.returnDateLbl.TabIndex = 6;
@@ -111,7 +110,7 @@
             // 
             // titleTxt
             // 
-            this.titleTxt.Location = new System.Drawing.Point(357, 14);
+            this.titleTxt.Location = new System.Drawing.Point(411, 14);
             this.titleTxt.Name = "titleTxt";
             this.titleTxt.ReadOnly = true;
             this.titleTxt.Size = new System.Drawing.Size(278, 29);
@@ -119,7 +118,7 @@
             // 
             // isbnTxt
             // 
-            this.isbnTxt.Location = new System.Drawing.Point(357, 56);
+            this.isbnTxt.Location = new System.Drawing.Point(411, 56);
             this.isbnTxt.Name = "isbnTxt";
             this.isbnTxt.ReadOnly = true;
             this.isbnTxt.Size = new System.Drawing.Size(278, 29);
@@ -127,7 +126,7 @@
             // 
             // authorTxt
             // 
-            this.authorTxt.Location = new System.Drawing.Point(357, 98);
+            this.authorTxt.Location = new System.Drawing.Point(411, 98);
             this.authorTxt.Name = "authorTxt";
             this.authorTxt.ReadOnly = true;
             this.authorTxt.Size = new System.Drawing.Size(278, 29);
@@ -135,7 +134,7 @@
             // 
             // publishedYearTxt
             // 
-            this.publishedYearTxt.Location = new System.Drawing.Point(357, 140);
+            this.publishedYearTxt.Location = new System.Drawing.Point(411, 140);
             this.publishedYearTxt.Name = "publishedYearTxt";
             this.publishedYearTxt.ReadOnly = true;
             this.publishedYearTxt.Size = new System.Drawing.Size(278, 29);
@@ -145,7 +144,7 @@
             // 
             this.borrowedDate.Enabled = false;
             this.borrowedDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.borrowedDate.Location = new System.Drawing.Point(726, 42);
+            this.borrowedDate.Location = new System.Drawing.Point(780, 42);
             this.borrowedDate.Name = "borrowedDate";
             this.borrowedDate.Size = new System.Drawing.Size(117, 29);
             this.borrowedDate.TabIndex = 11;
@@ -154,7 +153,7 @@
             // 
             this.returnDate.Enabled = false;
             this.returnDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.returnDate.Location = new System.Drawing.Point(726, 126);
+            this.returnDate.Location = new System.Drawing.Point(780, 126);
             this.returnDate.Name = "returnDate";
             this.returnDate.Size = new System.Drawing.Size(117, 29);
             this.returnDate.TabIndex = 12;
@@ -178,7 +177,7 @@
             this.Controls.Add(this.titleLbl);
             this.Controls.Add(this.bookImg);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 50, 4, 50);
+            this.Margin = new System.Windows.Forms.Padding(0, 50, 0, 50);
             this.Name = "borrowedBook";
             this.Padding = new System.Windows.Forms.Padding(10);
             this.Size = new System.Drawing.Size(960, 182);
