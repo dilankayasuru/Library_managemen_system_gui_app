@@ -387,6 +387,7 @@
             this.bookIdTxt.CueHint.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.bookIdTxt.CueHint.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
             this.bookIdTxt.Cursor = System.Windows.Forms.Cursors.Default;
+            this.bookIdTxt.Enabled = false;
             this.bookIdTxt.Location = new System.Drawing.Point(703, 174);
             this.bookIdTxt.Name = "bookIdTxt";
             this.bookIdTxt.ReadOnly = true;

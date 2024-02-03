@@ -279,6 +279,7 @@
             // 
             // publishedYearDetailTxt
             // 
+            this.publishedYearDetailTxt.Enabled = false;
             this.publishedYearDetailTxt.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.publishedYearDetailTxt.Location = new System.Drawing.Point(51, 458);
             this.publishedYearDetailTxt.Name = "publishedYearDetailTxt";
@@ -299,6 +300,7 @@
             // 
             // authorDetailTxt
             // 
+            this.authorDetailTxt.Enabled = false;
             this.authorDetailTxt.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.authorDetailTxt.Location = new System.Drawing.Point(51, 407);
             this.authorDetailTxt.Name = "authorDetailTxt";
@@ -330,6 +332,7 @@
             // 
             // isbnDetailTxt
             // 
+            this.isbnDetailTxt.Enabled = false;
             this.isbnDetailTxt.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.isbnDetailTxt.Location = new System.Drawing.Point(51, 356);
             this.isbnDetailTxt.Name = "isbnDetailTxt";
@@ -350,6 +353,7 @@
             // 
             // titleDetailTxt
             // 
+            this.titleDetailTxt.Enabled = false;
             this.titleDetailTxt.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.titleDetailTxt.Location = new System.Drawing.Point(51, 305);
             this.titleDetailTxt.Name = "titleDetailTxt";
@@ -381,6 +385,7 @@
             // 
             // idDetailTxt
             // 
+            this.idDetailTxt.Enabled = false;
             this.idDetailTxt.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.idDetailTxt.Location = new System.Drawing.Point(51, 186);
             this.idDetailTxt.Name = "idDetailTxt";
@@ -390,6 +395,7 @@
             // 
             // nameDetailTxt
             // 
+            this.nameDetailTxt.Enabled = false;
             this.nameDetailTxt.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nameDetailTxt.Location = new System.Drawing.Point(51, 134);
             this.nameDetailTxt.Name = "nameDetailTxt";

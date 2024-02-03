@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MemberHome));
             this.headerText = new System.Windows.Forms.Label();
             this.borrowedBooksPanel = new System.Windows.Forms.Panel();
             this.borrowedBooksCount = new System.Windows.Forms.Label();
@@ -36,11 +37,24 @@
             this.availableBooksCount = new System.Windows.Forms.Label();
             this.availableBooksLbl = new System.Windows.Forms.Label();
             this.profileDetailsPanel = new System.Windows.Forms.Panel();
-            this.quotePanel = new System.Windows.Forms.Panel();
             this.profileLbl = new System.Windows.Forms.Label();
+            this.quotePanel = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.firstNameLbl = new System.Windows.Forms.Label();
+            this.memberIdLbl = new System.Windows.Forms.Label();
+            this.lastNameLbl = new System.Windows.Forms.Label();
+            this.userNameLbl = new System.Windows.Forms.Label();
+            this.firstNameTxt = new System.Windows.Forms.TextBox();
+            this.memberIDtxt = new System.Windows.Forms.TextBox();
+            this.lastNameTxt = new System.Windows.Forms.TextBox();
+            this.userNameTxt = new System.Windows.Forms.TextBox();
+            this.quoteLbl = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.borrowedBooksPanel.SuspendLayout();
             this.availableBooksPanel.SuspendLayout();
             this.profileDetailsPanel.SuspendLayout();
+            this.quotePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // headerText
@@ -80,9 +94,9 @@
             this.borrowedBookLbl.AutoSize = true;
             this.borrowedBookLbl.Location = new System.Drawing.Point(8, 75);
             this.borrowedBookLbl.Name = "borrowedBookLbl";
-            this.borrowedBookLbl.Size = new System.Drawing.Size(88, 21);
+            this.borrowedBookLbl.Size = new System.Drawing.Size(124, 21);
             this.borrowedBookLbl.TabIndex = 0;
-            this.borrowedBookLbl.Text = "Total Books";
+            this.borrowedBookLbl.Text = "Borrowed Books";
             // 
             // availableBooksPanel
             // 
@@ -111,13 +125,22 @@
             this.availableBooksLbl.AutoSize = true;
             this.availableBooksLbl.Location = new System.Drawing.Point(8, 75);
             this.availableBooksLbl.Name = "availableBooksLbl";
-            this.availableBooksLbl.Size = new System.Drawing.Size(88, 21);
+            this.availableBooksLbl.Size = new System.Drawing.Size(119, 21);
             this.availableBooksLbl.TabIndex = 0;
-            this.availableBooksLbl.Text = "Total Books";
+            this.availableBooksLbl.Text = "Available Books";
             // 
             // profileDetailsPanel
             // 
             this.profileDetailsPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(222)))), ((int)(((byte)(211)))));
+            this.profileDetailsPanel.Controls.Add(this.userNameTxt);
+            this.profileDetailsPanel.Controls.Add(this.lastNameTxt);
+            this.profileDetailsPanel.Controls.Add(this.memberIDtxt);
+            this.profileDetailsPanel.Controls.Add(this.firstNameTxt);
+            this.profileDetailsPanel.Controls.Add(this.userNameLbl);
+            this.profileDetailsPanel.Controls.Add(this.lastNameLbl);
+            this.profileDetailsPanel.Controls.Add(this.memberIdLbl);
+            this.profileDetailsPanel.Controls.Add(this.firstNameLbl);
+            this.profileDetailsPanel.Controls.Add(this.pictureBox1);
             this.profileDetailsPanel.Controls.Add(this.profileLbl);
             this.profileDetailsPanel.Location = new System.Drawing.Point(47, 91);
             this.profileDetailsPanel.Name = "profileDetailsPanel";
@@ -125,24 +148,134 @@
             this.profileDetailsPanel.Size = new System.Drawing.Size(454, 547);
             this.profileDetailsPanel.TabIndex = 8;
             // 
+            // profileLbl
+            // 
+            this.profileLbl.AutoSize = true;
+            this.profileLbl.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.profileLbl.Location = new System.Drawing.Point(191, 18);
+            this.profileLbl.Name = "profileLbl";
+            this.profileLbl.Size = new System.Drawing.Size(72, 30);
+            this.profileLbl.TabIndex = 1;
+            this.profileLbl.Text = "Profile";
+            // 
             // quotePanel
             // 
             this.quotePanel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.quotePanel.BackgroundImage = global::LMS.Properties.Resources.issueBookImg;
             this.quotePanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.quotePanel.Controls.Add(this.label2);
+            this.quotePanel.Controls.Add(this.quoteLbl);
             this.quotePanel.Location = new System.Drawing.Point(549, 246);
+            this.quotePanel.Margin = new System.Windows.Forms.Padding(0);
             this.quotePanel.Name = "quotePanel";
             this.quotePanel.Size = new System.Drawing.Size(454, 392);
             this.quotePanel.TabIndex = 7;
             // 
-            // profileLbl
+            // pictureBox1
             // 
-            this.profileLbl.AutoSize = true;
-            this.profileLbl.Location = new System.Drawing.Point(13, 10);
-            this.profileLbl.Name = "profileLbl";
-            this.profileLbl.Size = new System.Drawing.Size(55, 21);
-            this.profileLbl.TabIndex = 1;
-            this.profileLbl.Text = "Profile";
+            this.pictureBox1.Image = global::LMS.Properties.Resources.memberProfileImg;
+            this.pictureBox1.Location = new System.Drawing.Point(152, 97);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(151, 153);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
+            // 
+            // firstNameLbl
+            // 
+            this.firstNameLbl.AutoSize = true;
+            this.firstNameLbl.Location = new System.Drawing.Point(43, 370);
+            this.firstNameLbl.Name = "firstNameLbl";
+            this.firstNameLbl.Size = new System.Drawing.Size(93, 21);
+            this.firstNameLbl.TabIndex = 3;
+            this.firstNameLbl.Text = "First Name: ";
+            // 
+            // memberIdLbl
+            // 
+            this.memberIdLbl.AutoSize = true;
+            this.memberIdLbl.Location = new System.Drawing.Point(43, 316);
+            this.memberIdLbl.Name = "memberIdLbl";
+            this.memberIdLbl.Size = new System.Drawing.Size(95, 21);
+            this.memberIdLbl.TabIndex = 4;
+            this.memberIdLbl.Text = "Member ID: ";
+            // 
+            // lastNameLbl
+            // 
+            this.lastNameLbl.AutoSize = true;
+            this.lastNameLbl.Location = new System.Drawing.Point(43, 424);
+            this.lastNameLbl.Name = "lastNameLbl";
+            this.lastNameLbl.Size = new System.Drawing.Size(91, 21);
+            this.lastNameLbl.TabIndex = 5;
+            this.lastNameLbl.Text = "Last Name: ";
+            // 
+            // userNameLbl
+            // 
+            this.userNameLbl.AutoSize = true;
+            this.userNameLbl.Location = new System.Drawing.Point(43, 478);
+            this.userNameLbl.Name = "userNameLbl";
+            this.userNameLbl.Size = new System.Drawing.Size(95, 21);
+            this.userNameLbl.TabIndex = 6;
+            this.userNameLbl.Text = "User Name: ";
+            // 
+            // firstNameTxt
+            // 
+            this.firstNameTxt.Enabled = false;
+            this.firstNameTxt.Location = new System.Drawing.Point(165, 366);
+            this.firstNameTxt.Name = "firstNameTxt";
+            this.firstNameTxt.Size = new System.Drawing.Size(246, 29);
+            this.firstNameTxt.TabIndex = 8;
+            // 
+            // memberIDtxt
+            // 
+            this.memberIDtxt.Enabled = false;
+            this.memberIDtxt.Location = new System.Drawing.Point(165, 312);
+            this.memberIDtxt.Name = "memberIDtxt";
+            this.memberIDtxt.Size = new System.Drawing.Size(246, 29);
+            this.memberIDtxt.TabIndex = 9;
+            // 
+            // lastNameTxt
+            // 
+            this.lastNameTxt.Enabled = false;
+            this.lastNameTxt.Location = new System.Drawing.Point(165, 420);
+            this.lastNameTxt.Name = "lastNameTxt";
+            this.lastNameTxt.Size = new System.Drawing.Size(246, 29);
+            this.lastNameTxt.TabIndex = 10;
+            // 
+            // userNameTxt
+            // 
+            this.userNameTxt.Enabled = false;
+            this.userNameTxt.Location = new System.Drawing.Point(165, 474);
+            this.userNameTxt.Name = "userNameTxt";
+            this.userNameTxt.Size = new System.Drawing.Size(246, 29);
+            this.userNameTxt.TabIndex = 11;
+            // 
+            // quoteLbl
+            // 
+            this.quoteLbl.BackColor = System.Drawing.Color.Transparent;
+            this.quoteLbl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.quoteLbl.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.quoteLbl.Location = new System.Drawing.Point(0, 0);
+            this.quoteLbl.Name = "quoteLbl";
+            this.quoteLbl.Size = new System.Drawing.Size(454, 57);
+            this.quoteLbl.TabIndex = 1;
+            this.quoteLbl.Text = "Daily Quotes";
+            this.quoteLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label2.Font = new System.Drawing.Font("Monotype Corsiva", 15.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(0, 57);
+            this.label2.MaximumSize = new System.Drawing.Size(454, 0);
+            this.label2.MinimumSize = new System.Drawing.Size(454, 0);
+            this.label2.Name = "label2";
+            this.label2.Padding = new System.Windows.Forms.Padding(15);
+            this.label2.Size = new System.Drawing.Size(454, 155);
+            this.label2.TabIndex = 5;
+            this.label2.Text = resources.GetString("label2.Text");
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // MemberHome
             // 
@@ -165,6 +298,9 @@
             this.availableBooksPanel.PerformLayout();
             this.profileDetailsPanel.ResumeLayout(false);
             this.profileDetailsPanel.PerformLayout();
+            this.quotePanel.ResumeLayout(false);
+            this.quotePanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -182,5 +318,16 @@
         private System.Windows.Forms.Panel quotePanel;
         private System.Windows.Forms.Panel profileDetailsPanel;
         private System.Windows.Forms.Label profileLbl;
+        private System.Windows.Forms.Label userNameLbl;
+        private System.Windows.Forms.Label lastNameLbl;
+        private System.Windows.Forms.Label memberIdLbl;
+        private System.Windows.Forms.Label firstNameLbl;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.TextBox firstNameTxt;
+        private System.Windows.Forms.TextBox userNameTxt;
+        private System.Windows.Forms.TextBox lastNameTxt;
+        private System.Windows.Forms.TextBox memberIDtxt;
+        private System.Windows.Forms.Label quoteLbl;
+        private System.Windows.Forms.Label label2;
     }
 }

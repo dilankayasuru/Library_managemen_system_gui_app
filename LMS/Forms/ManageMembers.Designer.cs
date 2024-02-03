@@ -153,6 +153,7 @@
             this.idText.CueHint.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.idText.CueHint.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
             this.idText.Cursor = System.Windows.Forms.Cursors.Default;
+            this.idText.Enabled = false;
             this.idText.Location = new System.Drawing.Point(703, 136);
             this.idText.Name = "idText";
             this.idText.ReadOnly = true;

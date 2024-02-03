@@ -110,6 +110,7 @@
             // 
             // titleTxt
             // 
+            this.titleTxt.Enabled = false;
             this.titleTxt.Location = new System.Drawing.Point(411, 14);
             this.titleTxt.Name = "titleTxt";
             this.titleTxt.ReadOnly = true;
@@ -118,6 +119,7 @@
             // 
             // isbnTxt
             // 
+            this.isbnTxt.Enabled = false;
             this.isbnTxt.Location = new System.Drawing.Point(411, 56);
             this.isbnTxt.Name = "isbnTxt";
             this.isbnTxt.ReadOnly = true;
@@ -126,6 +128,7 @@
             // 
             // authorTxt
             // 
+            this.authorTxt.Enabled = false;
             this.authorTxt.Location = new System.Drawing.Point(411, 98);
             this.authorTxt.Name = "authorTxt";
             this.authorTxt.ReadOnly = true;
@@ -134,6 +137,7 @@
             // 
             // publishedYearTxt
             // 
+            this.publishedYearTxt.Enabled = false;
             this.publishedYearTxt.Location = new System.Drawing.Point(411, 140);
             this.publishedYearTxt.Name = "publishedYearTxt";
             this.publishedYearTxt.ReadOnly = true;
@@ -162,7 +166,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(246)))));
+            this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.returnDate);
             this.Controls.Add(this.borrowedDate);
             this.Controls.Add(this.publishedYearTxt);
