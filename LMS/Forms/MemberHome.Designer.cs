@@ -37,24 +37,24 @@
             this.availableBooksCount = new System.Windows.Forms.Label();
             this.availableBooksLbl = new System.Windows.Forms.Label();
             this.profileDetailsPanel = new System.Windows.Forms.Panel();
+            this.userNameTxt = new System.Windows.Forms.TextBox();
+            this.lastNameTxt = new System.Windows.Forms.TextBox();
+            this.memberIDtxt = new System.Windows.Forms.TextBox();
+            this.firstNameTxt = new System.Windows.Forms.TextBox();
+            this.userNameLbl = new System.Windows.Forms.Label();
+            this.lastNameLbl = new System.Windows.Forms.Label();
+            this.memberIdLbl = new System.Windows.Forms.Label();
+            this.firstNameLbl = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.profileLbl = new System.Windows.Forms.Label();
             this.quotePanel = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.firstNameLbl = new System.Windows.Forms.Label();
-            this.memberIdLbl = new System.Windows.Forms.Label();
-            this.lastNameLbl = new System.Windows.Forms.Label();
-            this.userNameLbl = new System.Windows.Forms.Label();
-            this.firstNameTxt = new System.Windows.Forms.TextBox();
-            this.memberIDtxt = new System.Windows.Forms.TextBox();
-            this.lastNameTxt = new System.Windows.Forms.TextBox();
-            this.userNameTxt = new System.Windows.Forms.TextBox();
-            this.quoteLbl = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.quoteLbl = new System.Windows.Forms.Label();
             this.borrowedBooksPanel.SuspendLayout();
             this.availableBooksPanel.SuspendLayout();
             this.profileDetailsPanel.SuspendLayout();
-            this.quotePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.quotePanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // headerText
@@ -123,11 +123,11 @@
             // availableBooksLbl
             // 
             this.availableBooksLbl.AutoSize = true;
-            this.availableBooksLbl.Location = new System.Drawing.Point(8, 75);
+            this.availableBooksLbl.Location = new System.Drawing.Point(6, 75);
             this.availableBooksLbl.Name = "availableBooksLbl";
-            this.availableBooksLbl.Size = new System.Drawing.Size(119, 21);
+            this.availableBooksLbl.Size = new System.Drawing.Size(189, 21);
             this.availableBooksLbl.TabIndex = 0;
-            this.availableBooksLbl.Text = "Available Books";
+            this.availableBooksLbl.Text = "Available Books in Library";
             // 
             // profileDetailsPanel
             // 
@@ -147,6 +147,84 @@
             this.profileDetailsPanel.Padding = new System.Windows.Forms.Padding(10);
             this.profileDetailsPanel.Size = new System.Drawing.Size(454, 547);
             this.profileDetailsPanel.TabIndex = 8;
+            // 
+            // userNameTxt
+            // 
+            this.userNameTxt.Enabled = false;
+            this.userNameTxt.Location = new System.Drawing.Point(165, 474);
+            this.userNameTxt.Name = "userNameTxt";
+            this.userNameTxt.Size = new System.Drawing.Size(246, 29);
+            this.userNameTxt.TabIndex = 11;
+            // 
+            // lastNameTxt
+            // 
+            this.lastNameTxt.Enabled = false;
+            this.lastNameTxt.Location = new System.Drawing.Point(165, 420);
+            this.lastNameTxt.Name = "lastNameTxt";
+            this.lastNameTxt.Size = new System.Drawing.Size(246, 29);
+            this.lastNameTxt.TabIndex = 10;
+            // 
+            // memberIDtxt
+            // 
+            this.memberIDtxt.Enabled = false;
+            this.memberIDtxt.Location = new System.Drawing.Point(165, 312);
+            this.memberIDtxt.Name = "memberIDtxt";
+            this.memberIDtxt.Size = new System.Drawing.Size(246, 29);
+            this.memberIDtxt.TabIndex = 9;
+            // 
+            // firstNameTxt
+            // 
+            this.firstNameTxt.Enabled = false;
+            this.firstNameTxt.Location = new System.Drawing.Point(165, 366);
+            this.firstNameTxt.Name = "firstNameTxt";
+            this.firstNameTxt.Size = new System.Drawing.Size(246, 29);
+            this.firstNameTxt.TabIndex = 8;
+            // 
+            // userNameLbl
+            // 
+            this.userNameLbl.AutoSize = true;
+            this.userNameLbl.Location = new System.Drawing.Point(43, 478);
+            this.userNameLbl.Name = "userNameLbl";
+            this.userNameLbl.Size = new System.Drawing.Size(95, 21);
+            this.userNameLbl.TabIndex = 6;
+            this.userNameLbl.Text = "User Name: ";
+            // 
+            // lastNameLbl
+            // 
+            this.lastNameLbl.AutoSize = true;
+            this.lastNameLbl.Location = new System.Drawing.Point(43, 424);
+            this.lastNameLbl.Name = "lastNameLbl";
+            this.lastNameLbl.Size = new System.Drawing.Size(91, 21);
+            this.lastNameLbl.TabIndex = 5;
+            this.lastNameLbl.Text = "Last Name: ";
+            // 
+            // memberIdLbl
+            // 
+            this.memberIdLbl.AutoSize = true;
+            this.memberIdLbl.Location = new System.Drawing.Point(43, 316);
+            this.memberIdLbl.Name = "memberIdLbl";
+            this.memberIdLbl.Size = new System.Drawing.Size(95, 21);
+            this.memberIdLbl.TabIndex = 4;
+            this.memberIdLbl.Text = "Member ID: ";
+            // 
+            // firstNameLbl
+            // 
+            this.firstNameLbl.AutoSize = true;
+            this.firstNameLbl.Location = new System.Drawing.Point(43, 370);
+            this.firstNameLbl.Name = "firstNameLbl";
+            this.firstNameLbl.Size = new System.Drawing.Size(93, 21);
+            this.firstNameLbl.TabIndex = 3;
+            this.firstNameLbl.Text = "First Name: ";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::LMS.Properties.Resources.memberProfileImg;
+            this.pictureBox1.Location = new System.Drawing.Point(152, 97);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(151, 153);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
             // 
             // profileLbl
             // 
@@ -171,96 +249,6 @@
             this.quotePanel.Size = new System.Drawing.Size(454, 392);
             this.quotePanel.TabIndex = 7;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::LMS.Properties.Resources.memberProfileImg;
-            this.pictureBox1.Location = new System.Drawing.Point(152, 97);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(151, 153);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
-            // 
-            // firstNameLbl
-            // 
-            this.firstNameLbl.AutoSize = true;
-            this.firstNameLbl.Location = new System.Drawing.Point(43, 370);
-            this.firstNameLbl.Name = "firstNameLbl";
-            this.firstNameLbl.Size = new System.Drawing.Size(93, 21);
-            this.firstNameLbl.TabIndex = 3;
-            this.firstNameLbl.Text = "First Name: ";
-            // 
-            // memberIdLbl
-            // 
-            this.memberIdLbl.AutoSize = true;
-            this.memberIdLbl.Location = new System.Drawing.Point(43, 316);
-            this.memberIdLbl.Name = "memberIdLbl";
-            this.memberIdLbl.Size = new System.Drawing.Size(95, 21);
-            this.memberIdLbl.TabIndex = 4;
-            this.memberIdLbl.Text = "Member ID: ";
-            // 
-            // lastNameLbl
-            // 
-            this.lastNameLbl.AutoSize = true;
-            this.lastNameLbl.Location = new System.Drawing.Point(43, 424);
-            this.lastNameLbl.Name = "lastNameLbl";
-            this.lastNameLbl.Size = new System.Drawing.Size(91, 21);
-            this.lastNameLbl.TabIndex = 5;
-            this.lastNameLbl.Text = "Last Name: ";
-            // 
-            // userNameLbl
-            // 
-            this.userNameLbl.AutoSize = true;
-            this.userNameLbl.Location = new System.Drawing.Point(43, 478);
-            this.userNameLbl.Name = "userNameLbl";
-            this.userNameLbl.Size = new System.Drawing.Size(95, 21);
-            this.userNameLbl.TabIndex = 6;
-            this.userNameLbl.Text = "User Name: ";
-            // 
-            // firstNameTxt
-            // 
-            this.firstNameTxt.Enabled = false;
-            this.firstNameTxt.Location = new System.Drawing.Point(165, 366);
-            this.firstNameTxt.Name = "firstNameTxt";
-            this.firstNameTxt.Size = new System.Drawing.Size(246, 29);
-            this.firstNameTxt.TabIndex = 8;
-            // 
-            // memberIDtxt
-            // 
-            this.memberIDtxt.Enabled = false;
-            this.memberIDtxt.Location = new System.Drawing.Point(165, 312);
-            this.memberIDtxt.Name = "memberIDtxt";
-            this.memberIDtxt.Size = new System.Drawing.Size(246, 29);
-            this.memberIDtxt.TabIndex = 9;
-            // 
-            // lastNameTxt
-            // 
-            this.lastNameTxt.Enabled = false;
-            this.lastNameTxt.Location = new System.Drawing.Point(165, 420);
-            this.lastNameTxt.Name = "lastNameTxt";
-            this.lastNameTxt.Size = new System.Drawing.Size(246, 29);
-            this.lastNameTxt.TabIndex = 10;
-            // 
-            // userNameTxt
-            // 
-            this.userNameTxt.Enabled = false;
-            this.userNameTxt.Location = new System.Drawing.Point(165, 474);
-            this.userNameTxt.Name = "userNameTxt";
-            this.userNameTxt.Size = new System.Drawing.Size(246, 29);
-            this.userNameTxt.TabIndex = 11;
-            // 
-            // quoteLbl
-            // 
-            this.quoteLbl.BackColor = System.Drawing.Color.Transparent;
-            this.quoteLbl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.quoteLbl.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.quoteLbl.Location = new System.Drawing.Point(0, 0);
-            this.quoteLbl.Name = "quoteLbl";
-            this.quoteLbl.Size = new System.Drawing.Size(454, 57);
-            this.quoteLbl.TabIndex = 1;
-            this.quoteLbl.Text = "Daily Quotes";
-            this.quoteLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -277,6 +265,18 @@
             this.label2.Text = resources.GetString("label2.Text");
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // quoteLbl
+            // 
+            this.quoteLbl.BackColor = System.Drawing.Color.Transparent;
+            this.quoteLbl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.quoteLbl.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.quoteLbl.Location = new System.Drawing.Point(0, 0);
+            this.quoteLbl.Name = "quoteLbl";
+            this.quoteLbl.Size = new System.Drawing.Size(454, 57);
+            this.quoteLbl.TabIndex = 1;
+            this.quoteLbl.Text = "Daily Quotes";
+            this.quoteLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // MemberHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
@@ -292,15 +292,16 @@
             this.Name = "MemberHome";
             this.Padding = new System.Windows.Forms.Padding(10);
             this.Size = new System.Drawing.Size(1050, 729);
+            this.Load += new System.EventHandler(this.MemberHome_Load);
             this.borrowedBooksPanel.ResumeLayout(false);
             this.borrowedBooksPanel.PerformLayout();
             this.availableBooksPanel.ResumeLayout(false);
             this.availableBooksPanel.PerformLayout();
             this.profileDetailsPanel.ResumeLayout(false);
             this.profileDetailsPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.quotePanel.ResumeLayout(false);
             this.quotePanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -313,7 +314,6 @@
         private System.Windows.Forms.Label borrowedBooksCount;
         private System.Windows.Forms.Label borrowedBookLbl;
         private System.Windows.Forms.Panel availableBooksPanel;
-        private System.Windows.Forms.Label availableBooksCount;
         private System.Windows.Forms.Label availableBooksLbl;
         private System.Windows.Forms.Panel quotePanel;
         private System.Windows.Forms.Panel profileDetailsPanel;
@@ -329,5 +329,6 @@
         private System.Windows.Forms.TextBox memberIDtxt;
         private System.Windows.Forms.Label quoteLbl;
         private System.Windows.Forms.Label label2;
+        public System.Windows.Forms.Label availableBooksCount;
     }
 }

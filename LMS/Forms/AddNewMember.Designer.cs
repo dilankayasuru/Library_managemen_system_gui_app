@@ -30,16 +30,16 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddNewMember));
             this.mainPanel = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.reenterLbl = new System.Windows.Forms.Label();
+            this.reEnterPasswordTxt = new Krypton.Toolkit.KryptonTextBox();
+            this.passwordTxt = new Krypton.Toolkit.KryptonTextBox();
+            this.userNameTxt = new Krypton.Toolkit.KryptonTextBox();
+            this.lnameTxt = new Krypton.Toolkit.KryptonTextBox();
             this.memberIDtxt = new Krypton.Toolkit.KryptonTextBox();
             this.fnameTxt = new Krypton.Toolkit.KryptonTextBox();
             this.registerBtn = new Krypton.Toolkit.KryptonButton();
             this.cancelBtn = new Krypton.Toolkit.KryptonButton();
-            this.lnameTxt = new Krypton.Toolkit.KryptonTextBox();
-            this.userNameTxt = new Krypton.Toolkit.KryptonTextBox();
-            this.passwordTxt = new Krypton.Toolkit.KryptonTextBox();
-            this.reEnterPasswordTxt = new Krypton.Toolkit.KryptonTextBox();
-            this.reenterLbl = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.imagePanel = new System.Windows.Forms.Panel();
             this.newMemberImg = new System.Windows.Forms.PictureBox();
             this.mainPanel.SuspendLayout();
@@ -67,15 +67,110 @@
             this.mainPanel.Size = new System.Drawing.Size(531, 561);
             this.mainPanel.TabIndex = 1;
             // 
-            // label1
+            // reenterLbl
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(176, 86);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(183, 30);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Add New Member";
+            this.reenterLbl.AutoSize = true;
+            this.reenterLbl.Location = new System.Drawing.Point(49, 356);
+            this.reenterLbl.Name = "reenterLbl";
+            this.reenterLbl.Size = new System.Drawing.Size(138, 21);
+            this.reenterLbl.TabIndex = 0;
+            this.reenterLbl.Text = "Re Enter Password";
+            // 
+            // reEnterPasswordTxt
+            // 
+            this.reEnterPasswordTxt.CornerRoundingRadius = 20F;
+            this.reEnterPasswordTxt.CueHint.Color1 = System.Drawing.Color.DimGray;
+            this.reEnterPasswordTxt.CueHint.CueHintText = "Password";
+            this.reEnterPasswordTxt.CueHint.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reEnterPasswordTxt.CueHint.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.reEnterPasswordTxt.CueHint.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
+            this.reEnterPasswordTxt.Cursor = System.Windows.Forms.Cursors.Default;
+            this.reEnterPasswordTxt.Location = new System.Drawing.Point(40, 380);
+            this.reEnterPasswordTxt.Name = "reEnterPasswordTxt";
+            this.reEnterPasswordTxt.PasswordChar = '*';
+            this.reEnterPasswordTxt.Size = new System.Drawing.Size(454, 36);
+            this.reEnterPasswordTxt.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
+            this.reEnterPasswordTxt.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.reEnterPasswordTxt.StateCommon.Border.GraphicsHint = Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.reEnterPasswordTxt.StateCommon.Border.Rounding = 20F;
+            this.reEnterPasswordTxt.StateCommon.Content.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reEnterPasswordTxt.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.reEnterPasswordTxt.StateNormal.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.reEnterPasswordTxt.TabIndex = 6;
+            this.reEnterPasswordTxt.TextChanged += new System.EventHandler(this.reEnterPasswordTxt_TextChanged);
+            // 
+            // passwordTxt
+            // 
+            this.passwordTxt.CornerRoundingRadius = 20F;
+            this.passwordTxt.CueHint.Color1 = System.Drawing.Color.DimGray;
+            this.passwordTxt.CueHint.CueHintText = "Password";
+            this.passwordTxt.CueHint.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.passwordTxt.CueHint.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.passwordTxt.CueHint.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
+            this.passwordTxt.Cursor = System.Windows.Forms.Cursors.Default;
+            this.passwordTxt.Location = new System.Drawing.Point(270, 308);
+            this.passwordTxt.Name = "passwordTxt";
+            this.passwordTxt.PasswordChar = '*';
+            this.passwordTxt.Size = new System.Drawing.Size(224, 36);
+            this.passwordTxt.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
+            this.passwordTxt.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.passwordTxt.StateCommon.Border.GraphicsHint = Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.passwordTxt.StateCommon.Border.Rounding = 20F;
+            this.passwordTxt.StateCommon.Content.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.passwordTxt.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.passwordTxt.StateNormal.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.passwordTxt.TabIndex = 5;
+            this.passwordTxt.TextChanged += new System.EventHandler(this.passwordTxt_TextChanged);
+            // 
+            // userNameTxt
+            // 
+            this.userNameTxt.CornerRoundingRadius = 20F;
+            this.userNameTxt.CueHint.Color1 = System.Drawing.Color.DimGray;
+            this.userNameTxt.CueHint.CueHintText = "User Name";
+            this.userNameTxt.CueHint.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.userNameTxt.CueHint.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.userNameTxt.CueHint.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
+            this.userNameTxt.Cursor = System.Windows.Forms.Cursors.Default;
+            this.userNameTxt.Location = new System.Drawing.Point(40, 308);
+            this.userNameTxt.Name = "userNameTxt";
+            this.userNameTxt.Size = new System.Drawing.Size(224, 36);
+            this.userNameTxt.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
+            this.userNameTxt.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.userNameTxt.StateCommon.Border.GraphicsHint = Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.userNameTxt.StateCommon.Border.Rounding = 20F;
+            this.userNameTxt.StateCommon.Content.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.userNameTxt.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.userNameTxt.StateNormal.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.userNameTxt.TabIndex = 4;
+            // 
+            // lnameTxt
+            // 
+            this.lnameTxt.CornerRoundingRadius = 20F;
+            this.lnameTxt.CueHint.Color1 = System.Drawing.Color.DimGray;
+            this.lnameTxt.CueHint.CueHintText = "Last Name";
+            this.lnameTxt.CueHint.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lnameTxt.CueHint.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.lnameTxt.CueHint.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
+            this.lnameTxt.Cursor = System.Windows.Forms.Cursors.Default;
+            this.lnameTxt.Location = new System.Drawing.Point(270, 243);
+            this.lnameTxt.Name = "lnameTxt";
+            this.lnameTxt.Size = new System.Drawing.Size(224, 36);
+            this.lnameTxt.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
+            this.lnameTxt.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.lnameTxt.StateCommon.Border.GraphicsHint = Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.lnameTxt.StateCommon.Border.Rounding = 20F;
+            this.lnameTxt.StateCommon.Content.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lnameTxt.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.lnameTxt.StateNormal.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.lnameTxt.TabIndex = 3;
             // 
             // memberIDtxt
             // 
@@ -175,6 +270,7 @@
             this.registerBtn.StateNormal.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(178)))), ((int)(((byte)(73)))));
             this.registerBtn.TabIndex = 7;
             this.registerBtn.Values.Text = "Register";
+            this.registerBtn.Click += new System.EventHandler(this.registerBtn_Click);
             // 
             // cancelBtn
             // 
@@ -240,110 +336,15 @@
             this.cancelBtn.Values.Text = "Cancel";
             this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
             // 
-            // lnameTxt
+            // label1
             // 
-            this.lnameTxt.CornerRoundingRadius = 20F;
-            this.lnameTxt.CueHint.Color1 = System.Drawing.Color.DimGray;
-            this.lnameTxt.CueHint.CueHintText = "Last Name";
-            this.lnameTxt.CueHint.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lnameTxt.CueHint.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.lnameTxt.CueHint.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
-            this.lnameTxt.Cursor = System.Windows.Forms.Cursors.Default;
-            this.lnameTxt.Location = new System.Drawing.Point(270, 243);
-            this.lnameTxt.Name = "lnameTxt";
-            this.lnameTxt.Size = new System.Drawing.Size(224, 36);
-            this.lnameTxt.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
-            this.lnameTxt.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.lnameTxt.StateCommon.Border.GraphicsHint = Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.lnameTxt.StateCommon.Border.Rounding = 20F;
-            this.lnameTxt.StateCommon.Content.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lnameTxt.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.lnameTxt.StateNormal.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.lnameTxt.TabIndex = 3;
-            // 
-            // userNameTxt
-            // 
-            this.userNameTxt.CornerRoundingRadius = 20F;
-            this.userNameTxt.CueHint.Color1 = System.Drawing.Color.DimGray;
-            this.userNameTxt.CueHint.CueHintText = "User Name";
-            this.userNameTxt.CueHint.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.userNameTxt.CueHint.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.userNameTxt.CueHint.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
-            this.userNameTxt.Cursor = System.Windows.Forms.Cursors.Default;
-            this.userNameTxt.Location = new System.Drawing.Point(40, 308);
-            this.userNameTxt.Name = "userNameTxt";
-            this.userNameTxt.Size = new System.Drawing.Size(224, 36);
-            this.userNameTxt.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
-            this.userNameTxt.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.userNameTxt.StateCommon.Border.GraphicsHint = Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.userNameTxt.StateCommon.Border.Rounding = 20F;
-            this.userNameTxt.StateCommon.Content.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.userNameTxt.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.userNameTxt.StateNormal.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.userNameTxt.TabIndex = 4;
-            // 
-            // passwordTxt
-            // 
-            this.passwordTxt.CornerRoundingRadius = 20F;
-            this.passwordTxt.CueHint.Color1 = System.Drawing.Color.DimGray;
-            this.passwordTxt.CueHint.CueHintText = "Password";
-            this.passwordTxt.CueHint.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passwordTxt.CueHint.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.passwordTxt.CueHint.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
-            this.passwordTxt.Cursor = System.Windows.Forms.Cursors.Default;
-            this.passwordTxt.Location = new System.Drawing.Point(270, 308);
-            this.passwordTxt.Name = "passwordTxt";
-            this.passwordTxt.PasswordChar = '*';
-            this.passwordTxt.Size = new System.Drawing.Size(224, 36);
-            this.passwordTxt.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
-            this.passwordTxt.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.passwordTxt.StateCommon.Border.GraphicsHint = Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.passwordTxt.StateCommon.Border.Rounding = 20F;
-            this.passwordTxt.StateCommon.Content.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passwordTxt.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.passwordTxt.StateNormal.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.passwordTxt.TabIndex = 5;
-            this.passwordTxt.TextChanged += new System.EventHandler(this.passwordTxt_TextChanged);
-            // 
-            // reEnterPasswordTxt
-            // 
-            this.reEnterPasswordTxt.CornerRoundingRadius = 20F;
-            this.reEnterPasswordTxt.CueHint.Color1 = System.Drawing.Color.DimGray;
-            this.reEnterPasswordTxt.CueHint.CueHintText = "Password";
-            this.reEnterPasswordTxt.CueHint.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.reEnterPasswordTxt.CueHint.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.reEnterPasswordTxt.CueHint.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
-            this.reEnterPasswordTxt.Cursor = System.Windows.Forms.Cursors.Default;
-            this.reEnterPasswordTxt.Location = new System.Drawing.Point(40, 380);
-            this.reEnterPasswordTxt.Name = "reEnterPasswordTxt";
-            this.reEnterPasswordTxt.PasswordChar = '*';
-            this.reEnterPasswordTxt.Size = new System.Drawing.Size(454, 36);
-            this.reEnterPasswordTxt.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
-            this.reEnterPasswordTxt.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.reEnterPasswordTxt.StateCommon.Border.GraphicsHint = Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.reEnterPasswordTxt.StateCommon.Border.Rounding = 20F;
-            this.reEnterPasswordTxt.StateCommon.Content.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.reEnterPasswordTxt.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.reEnterPasswordTxt.StateNormal.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.reEnterPasswordTxt.TabIndex = 6;
-            this.reEnterPasswordTxt.TextChanged += new System.EventHandler(this.reEnterPasswordTxt_TextChanged);
-            // 
-            // reenterLbl
-            // 
-            this.reenterLbl.AutoSize = true;
-            this.reenterLbl.Location = new System.Drawing.Point(49, 356);
-            this.reenterLbl.Name = "reenterLbl";
-            this.reenterLbl.Size = new System.Drawing.Size(138, 21);
-            this.reenterLbl.TabIndex = 0;
-            this.reenterLbl.Text = "Re Enter Password";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(176, 86);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(183, 30);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Add New Member";
             // 
             // imagePanel
             // 

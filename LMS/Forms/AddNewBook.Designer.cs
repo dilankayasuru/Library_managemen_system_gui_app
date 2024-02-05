@@ -36,7 +36,7 @@
             this.authorTxt = new Krypton.Toolkit.KryptonTextBox();
             this.isbnTxt = new Krypton.Toolkit.KryptonTextBox();
             this.titleTxt = new Krypton.Toolkit.KryptonTextBox();
-            this.registerBtn = new Krypton.Toolkit.KryptonButton();
+            this.addBookBtn = new Krypton.Toolkit.KryptonButton();
             this.cancelBtn = new Krypton.Toolkit.KryptonButton();
             this.addNewBookLbl = new System.Windows.Forms.Label();
             this.imagePanel = new System.Windows.Forms.Panel();
@@ -54,7 +54,7 @@
             this.mainPanel.Controls.Add(this.authorTxt);
             this.mainPanel.Controls.Add(this.isbnTxt);
             this.mainPanel.Controls.Add(this.titleTxt);
-            this.mainPanel.Controls.Add(this.registerBtn);
+            this.mainPanel.Controls.Add(this.addBookBtn);
             this.mainPanel.Controls.Add(this.cancelBtn);
             this.mainPanel.Controls.Add(this.addNewBookLbl);
             this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -203,58 +203,59 @@
             this.titleTxt.StateNormal.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.titleTxt.TabIndex = 3;
             // 
-            // registerBtn
+            // addBookBtn
             // 
-            this.registerBtn.CornerRoundingRadius = 20F;
-            this.registerBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.registerBtn.Location = new System.Drawing.Point(156, 438);
-            this.registerBtn.Name = "registerBtn";
-            this.registerBtn.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(178)))), ((int)(((byte)(73)))));
-            this.registerBtn.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(178)))), ((int)(((byte)(73)))));
-            this.registerBtn.OverrideDefault.Back.GraphicsHint = Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.registerBtn.OverrideDefault.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(178)))), ((int)(((byte)(73)))));
-            this.registerBtn.OverrideDefault.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(178)))), ((int)(((byte)(73)))));
-            this.registerBtn.OverrideDefault.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            this.addBookBtn.CornerRoundingRadius = 20F;
+            this.addBookBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.addBookBtn.Location = new System.Drawing.Point(156, 438);
+            this.addBookBtn.Name = "addBookBtn";
+            this.addBookBtn.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(178)))), ((int)(((byte)(73)))));
+            this.addBookBtn.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(178)))), ((int)(((byte)(73)))));
+            this.addBookBtn.OverrideDefault.Back.GraphicsHint = Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.addBookBtn.OverrideDefault.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(178)))), ((int)(((byte)(73)))));
+            this.addBookBtn.OverrideDefault.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(178)))), ((int)(((byte)(73)))));
+            this.addBookBtn.OverrideDefault.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | Krypton.Toolkit.PaletteDrawBorders.Left) 
             | Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.registerBtn.OverrideDefault.Border.GraphicsHint = Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.registerBtn.OverrideDefault.Border.Rounding = 20F;
-            this.registerBtn.OverrideDefault.Border.Width = 1;
-            this.registerBtn.OverrideDefault.Content.ShortText.Color1 = System.Drawing.Color.White;
-            this.registerBtn.OverrideDefault.Content.ShortText.Color2 = System.Drawing.Color.White;
-            this.registerBtn.OverrideDefault.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.registerBtn.OverrideFocus.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(160)))), ((int)(((byte)(73)))));
-            this.registerBtn.OverrideFocus.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(160)))), ((int)(((byte)(73)))));
-            this.registerBtn.OverrideFocus.Back.GraphicsHint = Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.registerBtn.OverrideFocus.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(160)))), ((int)(((byte)(73)))));
-            this.registerBtn.OverrideFocus.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(160)))), ((int)(((byte)(73)))));
-            this.registerBtn.OverrideFocus.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            this.addBookBtn.OverrideDefault.Border.GraphicsHint = Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.addBookBtn.OverrideDefault.Border.Rounding = 20F;
+            this.addBookBtn.OverrideDefault.Border.Width = 1;
+            this.addBookBtn.OverrideDefault.Content.ShortText.Color1 = System.Drawing.Color.White;
+            this.addBookBtn.OverrideDefault.Content.ShortText.Color2 = System.Drawing.Color.White;
+            this.addBookBtn.OverrideDefault.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addBookBtn.OverrideFocus.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(160)))), ((int)(((byte)(73)))));
+            this.addBookBtn.OverrideFocus.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(160)))), ((int)(((byte)(73)))));
+            this.addBookBtn.OverrideFocus.Back.GraphicsHint = Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.addBookBtn.OverrideFocus.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(160)))), ((int)(((byte)(73)))));
+            this.addBookBtn.OverrideFocus.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(160)))), ((int)(((byte)(73)))));
+            this.addBookBtn.OverrideFocus.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | Krypton.Toolkit.PaletteDrawBorders.Left) 
             | Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.registerBtn.OverrideFocus.Border.Rounding = 20F;
-            this.registerBtn.OverrideFocus.Border.Width = 1;
-            this.registerBtn.OverrideFocus.Content.ShortText.Color1 = System.Drawing.Color.White;
-            this.registerBtn.OverrideFocus.Content.ShortText.Color2 = System.Drawing.Color.White;
-            this.registerBtn.OverrideFocus.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.registerBtn.PaletteMode = Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.registerBtn.Size = new System.Drawing.Size(106, 36);
-            this.registerBtn.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(178)))), ((int)(((byte)(73)))));
-            this.registerBtn.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(178)))), ((int)(((byte)(73)))));
-            this.registerBtn.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(178)))), ((int)(((byte)(73)))));
-            this.registerBtn.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(178)))), ((int)(((byte)(73)))));
-            this.registerBtn.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            this.addBookBtn.OverrideFocus.Border.Rounding = 20F;
+            this.addBookBtn.OverrideFocus.Border.Width = 1;
+            this.addBookBtn.OverrideFocus.Content.ShortText.Color1 = System.Drawing.Color.White;
+            this.addBookBtn.OverrideFocus.Content.ShortText.Color2 = System.Drawing.Color.White;
+            this.addBookBtn.OverrideFocus.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addBookBtn.PaletteMode = Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.addBookBtn.Size = new System.Drawing.Size(106, 36);
+            this.addBookBtn.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(178)))), ((int)(((byte)(73)))));
+            this.addBookBtn.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(178)))), ((int)(((byte)(73)))));
+            this.addBookBtn.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(178)))), ((int)(((byte)(73)))));
+            this.addBookBtn.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(178)))), ((int)(((byte)(73)))));
+            this.addBookBtn.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | Krypton.Toolkit.PaletteDrawBorders.Left) 
             | Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.registerBtn.StateCommon.Border.GraphicsHint = Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.registerBtn.StateCommon.Border.Rounding = 20F;
-            this.registerBtn.StateCommon.Border.Width = 1;
-            this.registerBtn.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
-            this.registerBtn.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
-            this.registerBtn.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.registerBtn.StateNormal.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(178)))), ((int)(((byte)(73)))));
-            this.registerBtn.StateNormal.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(178)))), ((int)(((byte)(73)))));
-            this.registerBtn.TabIndex = 7;
-            this.registerBtn.Values.Text = "Add Book";
+            this.addBookBtn.StateCommon.Border.GraphicsHint = Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.addBookBtn.StateCommon.Border.Rounding = 20F;
+            this.addBookBtn.StateCommon.Border.Width = 1;
+            this.addBookBtn.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
+            this.addBookBtn.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
+            this.addBookBtn.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addBookBtn.StateNormal.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(178)))), ((int)(((byte)(73)))));
+            this.addBookBtn.StateNormal.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(178)))), ((int)(((byte)(73)))));
+            this.addBookBtn.TabIndex = 7;
+            this.addBookBtn.Values.Text = "Add Book";
+            this.addBookBtn.Click += new System.EventHandler(this.addBookBtn_Click);
             // 
             // cancelBtn
             // 
@@ -387,7 +388,7 @@
         private Krypton.Toolkit.KryptonTextBox authorTxt;
         private Krypton.Toolkit.KryptonTextBox isbnTxt;
         private Krypton.Toolkit.KryptonTextBox titleTxt;
-        private Krypton.Toolkit.KryptonButton registerBtn;
+        private Krypton.Toolkit.KryptonButton addBookBtn;
         private Krypton.Toolkit.KryptonButton cancelBtn;
         private System.Windows.Forms.Label addNewBookLbl;
     }

@@ -12,19 +12,16 @@ namespace LMS.Forms
 {
     public partial class AddNewMember : Form
     {
-        public AddNewMember()
+        Librarian librarian;
+        public AddNewMember(Librarian librarian)
         {
+            this.librarian = librarian;
             InitializeComponent();
         }
 
         private void cancelBtn_Click(object sender, EventArgs e)
         {
-            this.memberIDtxt.Clear();
-            this.fnameTxt.Clear();
-            this.lnameTxt.Clear();
-            this.userNameTxt.Clear();
-            this.passwordTxt.Clear();
-            this.reEnterPasswordTxt.Clear();
+            clearText();
             changeBorderToGray();
         }
 
@@ -51,6 +48,16 @@ namespace LMS.Forms
                 changeBorderToGreen();
             }
         }
+
+        private void clearText()
+        {
+            this.memberIDtxt.Clear();
+            this.fnameTxt.Clear();
+            this.lnameTxt.Clear();
+            this.userNameTxt.Clear();
+            this.passwordTxt.Clear();
+            this.reEnterPasswordTxt.Clear();
+        }
         public void changeBorderToRed()
         {
             this.reEnterPasswordTxt.StateActive.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(69)))), ((int)(((byte)(65)))));
@@ -73,5 +80,34 @@ namespace LMS.Forms
             this.reEnterPasswordTxt.StateNormal.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
         }
 
+        private void registerBtn_Click(object sender, EventArgs e)
+        {
+            if (this.memberIDtxt.Text == "" || this.userNameTxt.Text == "" || this.passwordTxt.Text == "" || this.fnameTxt.Text == "" || this.lnameTxt.Text == "")
+            {
+                MessageBox.Show("Please enter valid informatino!", "Invalid Input!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                clearText();
+            }
+            else if (!(this.passwordTxt.Text == this.reEnterPasswordTxt.Text))
+            {
+                MessageBox.Show("Password not matched!", "Wrong Password!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.passwordTxt.Clear();
+                this.reEnterPasswordTxt.Clear();
+            }
+            else
+            {
+                try
+                {
+                    librarian.addNewMember(this.memberIDtxt.Text, this.userNameTxt.Text, this.passwordTxt.Text, this.fnameTxt.Text, this.lnameTxt.Text);
+                }
+                catch
+                {
+                    MessageBox.Show("Member already exists!", "Duplicate Entry!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    clearText();
+                }
+            }
+        }
     }
 }

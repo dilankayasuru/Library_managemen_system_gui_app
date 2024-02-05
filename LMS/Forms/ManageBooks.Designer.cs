@@ -188,6 +188,7 @@
             this.deleteBtn.StateTracking.Border.Width = 1;
             this.deleteBtn.TabIndex = 10;
             this.deleteBtn.Values.Text = "Delete";
+            this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
             // 
             // saveBtn
             // 
@@ -241,6 +242,7 @@
             this.saveBtn.StateNormal.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(178)))), ((int)(((byte)(73)))));
             this.saveBtn.TabIndex = 9;
             this.saveBtn.Values.Text = "Save";
+            this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
             // 
             // ISBNTxt
             // 
@@ -315,7 +317,7 @@
             // 
             this.searchTxt.CornerRoundingRadius = 20F;
             this.searchTxt.CueHint.Color1 = System.Drawing.Color.DimGray;
-            this.searchTxt.CueHint.CueHintText = "Find members by...";
+            this.searchTxt.CueHint.CueHintText = "Find books by...";
             this.searchTxt.CueHint.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchTxt.CueHint.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.searchTxt.CueHint.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
@@ -333,6 +335,7 @@
             this.searchTxt.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.searchTxt.StateNormal.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.searchTxt.TabIndex = 1;
+            this.searchTxt.TextChanged += new System.EventHandler(this.searchTxt_TextChanged);
             // 
             // filterComboBox
             // 
@@ -347,6 +350,7 @@
             this.filterComboBox.Name = "filterComboBox";
             this.filterComboBox.Size = new System.Drawing.Size(120, 29);
             this.filterComboBox.TabIndex = 2;
+            this.filterComboBox.SelectedIndexChanged += new System.EventHandler(this.filterComboBox_SelectedIndexChanged);
             // 
             // headerText
             // 
@@ -369,9 +373,9 @@
             this.addNewBookBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.addNewBookBtn.Image = global::LMS.Properties.Resources.addNewBooksIcon;
             this.addNewBookBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.addNewBookBtn.Location = new System.Drawing.Point(843, 225);
+            this.addNewBookBtn.Location = new System.Drawing.Point(865, 225);
             this.addNewBookBtn.Name = "addNewBookBtn";
-            this.addNewBookBtn.Size = new System.Drawing.Size(185, 36);
+            this.addNewBookBtn.Size = new System.Drawing.Size(163, 36);
             this.addNewBookBtn.TabIndex = 12;
             this.addNewBookBtn.Text = "Add New Book";
             this.addNewBookBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -451,12 +455,18 @@
             // 
             // booksDataGridView
             // 
+            this.booksDataGridView.AllowUserToAddRows = false;
+            this.booksDataGridView.AllowUserToDeleteRows = false;
+            this.booksDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.booksDataGridView.BackgroundColor = System.Drawing.Color.White;
             this.booksDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.booksDataGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.booksDataGridView.Location = new System.Drawing.Point(10, 281);
             this.booksDataGridView.Name = "booksDataGridView";
+            this.booksDataGridView.ReadOnly = true;
             this.booksDataGridView.Size = new System.Drawing.Size(1030, 438);
             this.booksDataGridView.TabIndex = 0;
+            this.booksDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.booksDataGridView_CellDoubleClick);
             // 
             // ManageBooks
             // 

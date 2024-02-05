@@ -64,6 +64,7 @@
             this.searchTxt.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.searchTxt.StateNormal.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.searchTxt.TabIndex = 1;
+            this.searchTxt.TextChanged += new System.EventHandler(this.searchTxt_TextChanged);
             // 
             // filterComboBox
             // 
@@ -78,6 +79,7 @@
             this.filterComboBox.Name = "filterComboBox";
             this.filterComboBox.Size = new System.Drawing.Size(120, 29);
             this.filterComboBox.TabIndex = 2;
+            this.filterComboBox.SelectedIndexChanged += new System.EventHandler(this.filterComboBox_SelectedIndexChanged);
             // 
             // headerText
             // 
@@ -91,12 +93,18 @@
             // 
             // membersDataGridView
             // 
+            this.membersDataGridView.AllowUserToAddRows = false;
+            this.membersDataGridView.AllowUserToDeleteRows = false;
+            this.membersDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.membersDataGridView.BackgroundColor = System.Drawing.Color.White;
             this.membersDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.membersDataGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.membersDataGridView.Location = new System.Drawing.Point(10, 264);
             this.membersDataGridView.Name = "membersDataGridView";
+            this.membersDataGridView.ReadOnly = true;
             this.membersDataGridView.Size = new System.Drawing.Size(1030, 455);
             this.membersDataGridView.TabIndex = 0;
+            this.membersDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.membersDataGridView_CellDoubleClick);
             // 
             // fnameText
             // 
@@ -221,6 +229,7 @@
             this.saveBtn.StateNormal.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(178)))), ((int)(((byte)(73)))));
             this.saveBtn.TabIndex = 6;
             this.saveBtn.Values.Text = "Save";
+            this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
             // 
             // deleteBtn
             // 
@@ -301,6 +310,7 @@
             this.deleteBtn.StateTracking.Border.Width = 1;
             this.deleteBtn.TabIndex = 7;
             this.deleteBtn.Values.Text = "Delete";
+            this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
             // 
             // cancelBtn
             // 

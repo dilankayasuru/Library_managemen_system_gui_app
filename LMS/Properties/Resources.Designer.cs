@@ -63,6 +63,16 @@ namespace LMS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _6920931 {
+            get {
+                object obj = ResourceManager.GetObject("6920931", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap addnewBookImg {
             get {
                 object obj = ResourceManager.GetObject("addnewBookImg", resourceCulture);
@@ -216,6 +226,16 @@ namespace LMS.Properties {
         internal static System.Drawing.Bitmap memberProfileImg {
             get {
                 object obj = ResourceManager.GetObject("memberProfileImg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap refreshIcon {
+            get {
+                object obj = ResourceManager.GetObject("refreshIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

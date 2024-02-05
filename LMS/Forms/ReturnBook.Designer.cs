@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReturnBook));
             this.memberIDtxt = new Krypton.Toolkit.KryptonTextBox();
             this.ISBNTxt = new Krypton.Toolkit.KryptonTextBox();
-            this.issueBtn = new Krypton.Toolkit.KryptonButton();
+            this.returnBtn = new Krypton.Toolkit.KryptonButton();
             this.headerText = new System.Windows.Forms.Label();
             this.cancelBtn = new Krypton.Toolkit.KryptonButton();
             this.mainPanel = new System.Windows.Forms.Panel();
@@ -76,6 +76,7 @@
             this.memberIDtxt.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.memberIDtxt.StateNormal.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.memberIDtxt.TabIndex = 1;
+            this.memberIDtxt.TextChanged += new System.EventHandler(this.memberIDtxt_TextChanged);
             // 
             // ISBNTxt
             // 
@@ -99,59 +100,61 @@
             this.ISBNTxt.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.ISBNTxt.StateNormal.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.ISBNTxt.TabIndex = 0;
+            this.ISBNTxt.TextChanged += new System.EventHandler(this.ISBNTxt_TextChanged);
             // 
-            // issueBtn
+            // returnBtn
             // 
-            this.issueBtn.CornerRoundingRadius = 20F;
-            this.issueBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.issueBtn.Location = new System.Drawing.Point(86, 338);
-            this.issueBtn.Name = "issueBtn";
-            this.issueBtn.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(178)))), ((int)(((byte)(73)))));
-            this.issueBtn.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(178)))), ((int)(((byte)(73)))));
-            this.issueBtn.OverrideDefault.Back.GraphicsHint = Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.issueBtn.OverrideDefault.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(178)))), ((int)(((byte)(73)))));
-            this.issueBtn.OverrideDefault.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(178)))), ((int)(((byte)(73)))));
-            this.issueBtn.OverrideDefault.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            this.returnBtn.CornerRoundingRadius = 20F;
+            this.returnBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.returnBtn.Location = new System.Drawing.Point(86, 338);
+            this.returnBtn.Name = "returnBtn";
+            this.returnBtn.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(178)))), ((int)(((byte)(73)))));
+            this.returnBtn.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(178)))), ((int)(((byte)(73)))));
+            this.returnBtn.OverrideDefault.Back.GraphicsHint = Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.returnBtn.OverrideDefault.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(178)))), ((int)(((byte)(73)))));
+            this.returnBtn.OverrideDefault.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(178)))), ((int)(((byte)(73)))));
+            this.returnBtn.OverrideDefault.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | Krypton.Toolkit.PaletteDrawBorders.Left) 
             | Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.issueBtn.OverrideDefault.Border.GraphicsHint = Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.issueBtn.OverrideDefault.Border.Rounding = 20F;
-            this.issueBtn.OverrideDefault.Border.Width = 1;
-            this.issueBtn.OverrideDefault.Content.ShortText.Color1 = System.Drawing.Color.White;
-            this.issueBtn.OverrideDefault.Content.ShortText.Color2 = System.Drawing.Color.White;
-            this.issueBtn.OverrideDefault.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.issueBtn.OverrideFocus.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(160)))), ((int)(((byte)(73)))));
-            this.issueBtn.OverrideFocus.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(160)))), ((int)(((byte)(73)))));
-            this.issueBtn.OverrideFocus.Back.GraphicsHint = Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.issueBtn.OverrideFocus.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(160)))), ((int)(((byte)(73)))));
-            this.issueBtn.OverrideFocus.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(160)))), ((int)(((byte)(73)))));
-            this.issueBtn.OverrideFocus.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            this.returnBtn.OverrideDefault.Border.GraphicsHint = Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.returnBtn.OverrideDefault.Border.Rounding = 20F;
+            this.returnBtn.OverrideDefault.Border.Width = 1;
+            this.returnBtn.OverrideDefault.Content.ShortText.Color1 = System.Drawing.Color.White;
+            this.returnBtn.OverrideDefault.Content.ShortText.Color2 = System.Drawing.Color.White;
+            this.returnBtn.OverrideDefault.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.returnBtn.OverrideFocus.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(160)))), ((int)(((byte)(73)))));
+            this.returnBtn.OverrideFocus.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(160)))), ((int)(((byte)(73)))));
+            this.returnBtn.OverrideFocus.Back.GraphicsHint = Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.returnBtn.OverrideFocus.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(160)))), ((int)(((byte)(73)))));
+            this.returnBtn.OverrideFocus.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(160)))), ((int)(((byte)(73)))));
+            this.returnBtn.OverrideFocus.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | Krypton.Toolkit.PaletteDrawBorders.Left) 
             | Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.issueBtn.OverrideFocus.Border.Rounding = 20F;
-            this.issueBtn.OverrideFocus.Border.Width = 1;
-            this.issueBtn.OverrideFocus.Content.ShortText.Color1 = System.Drawing.Color.White;
-            this.issueBtn.OverrideFocus.Content.ShortText.Color2 = System.Drawing.Color.White;
-            this.issueBtn.OverrideFocus.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.issueBtn.PaletteMode = Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.issueBtn.Size = new System.Drawing.Size(115, 36);
-            this.issueBtn.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(178)))), ((int)(((byte)(73)))));
-            this.issueBtn.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(178)))), ((int)(((byte)(73)))));
-            this.issueBtn.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(178)))), ((int)(((byte)(73)))));
-            this.issueBtn.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(178)))), ((int)(((byte)(73)))));
-            this.issueBtn.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            this.returnBtn.OverrideFocus.Border.Rounding = 20F;
+            this.returnBtn.OverrideFocus.Border.Width = 1;
+            this.returnBtn.OverrideFocus.Content.ShortText.Color1 = System.Drawing.Color.White;
+            this.returnBtn.OverrideFocus.Content.ShortText.Color2 = System.Drawing.Color.White;
+            this.returnBtn.OverrideFocus.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.returnBtn.PaletteMode = Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.returnBtn.Size = new System.Drawing.Size(115, 36);
+            this.returnBtn.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(178)))), ((int)(((byte)(73)))));
+            this.returnBtn.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(178)))), ((int)(((byte)(73)))));
+            this.returnBtn.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(178)))), ((int)(((byte)(73)))));
+            this.returnBtn.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(178)))), ((int)(((byte)(73)))));
+            this.returnBtn.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | Krypton.Toolkit.PaletteDrawBorders.Left) 
             | Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.issueBtn.StateCommon.Border.GraphicsHint = Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.issueBtn.StateCommon.Border.Rounding = 20F;
-            this.issueBtn.StateCommon.Border.Width = 1;
-            this.issueBtn.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
-            this.issueBtn.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
-            this.issueBtn.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.issueBtn.StateNormal.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(178)))), ((int)(((byte)(73)))));
-            this.issueBtn.StateNormal.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(178)))), ((int)(((byte)(73)))));
-            this.issueBtn.TabIndex = 2;
-            this.issueBtn.Values.Text = "Return Book";
+            this.returnBtn.StateCommon.Border.GraphicsHint = Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.returnBtn.StateCommon.Border.Rounding = 20F;
+            this.returnBtn.StateCommon.Border.Width = 1;
+            this.returnBtn.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
+            this.returnBtn.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
+            this.returnBtn.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.returnBtn.StateNormal.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(178)))), ((int)(((byte)(73)))));
+            this.returnBtn.StateNormal.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(178)))), ((int)(((byte)(73)))));
+            this.returnBtn.TabIndex = 2;
+            this.returnBtn.Values.Text = "Return Book";
+            this.returnBtn.Click += new System.EventHandler(this.returnBtn_Click);
             // 
             // headerText
             // 
@@ -232,7 +235,7 @@
             this.mainPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(243)))), ((int)(((byte)(239)))));
             this.mainPanel.Controls.Add(this.memberIDtxt);
             this.mainPanel.Controls.Add(this.ISBNTxt);
-            this.mainPanel.Controls.Add(this.issueBtn);
+            this.mainPanel.Controls.Add(this.returnBtn);
             this.mainPanel.Controls.Add(this.headerText);
             this.mainPanel.Controls.Add(this.cancelBtn);
             this.mainPanel.Dock = System.Windows.Forms.DockStyle.Left;
@@ -280,7 +283,6 @@
             // 
             // publishedYearDetailTxt
             // 
-            this.publishedYearDetailTxt.Enabled = false;
             this.publishedYearDetailTxt.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.publishedYearDetailTxt.Location = new System.Drawing.Point(51, 458);
             this.publishedYearDetailTxt.Name = "publishedYearDetailTxt";
@@ -301,7 +303,6 @@
             // 
             // authorDetailTxt
             // 
-            this.authorDetailTxt.Enabled = false;
             this.authorDetailTxt.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.authorDetailTxt.Location = new System.Drawing.Point(51, 407);
             this.authorDetailTxt.Name = "authorDetailTxt";
@@ -333,7 +334,6 @@
             // 
             // isbnDetailTxt
             // 
-            this.isbnDetailTxt.Enabled = false;
             this.isbnDetailTxt.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.isbnDetailTxt.Location = new System.Drawing.Point(51, 356);
             this.isbnDetailTxt.Name = "isbnDetailTxt";
@@ -354,7 +354,6 @@
             // 
             // titleDetailTxt
             // 
-            this.titleDetailTxt.Enabled = false;
             this.titleDetailTxt.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.titleDetailTxt.Location = new System.Drawing.Point(51, 305);
             this.titleDetailTxt.Name = "titleDetailTxt";
@@ -386,7 +385,6 @@
             // 
             // idDetailTxt
             // 
-            this.idDetailTxt.Enabled = false;
             this.idDetailTxt.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.idDetailTxt.Location = new System.Drawing.Point(51, 186);
             this.idDetailTxt.Name = "idDetailTxt";
@@ -396,7 +394,6 @@
             // 
             // nameDetailTxt
             // 
-            this.nameDetailTxt.Enabled = false;
             this.nameDetailTxt.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nameDetailTxt.Location = new System.Drawing.Point(51, 134);
             this.nameDetailTxt.Name = "nameDetailTxt";
@@ -439,9 +436,8 @@
         }
 
         #endregion
-        private Krypton.Toolkit.KryptonTextBox memberIDtxt;
         private Krypton.Toolkit.KryptonTextBox ISBNTxt;
-        private Krypton.Toolkit.KryptonButton issueBtn;
+        private Krypton.Toolkit.KryptonButton returnBtn;
         private System.Windows.Forms.Label headerText;
         private Krypton.Toolkit.KryptonButton cancelBtn;
         private System.Windows.Forms.Panel mainPanel;
@@ -457,8 +453,9 @@
         private System.Windows.Forms.TextBox titleDetailTxt;
         private System.Windows.Forms.Label memberDetailsLbl;
         private System.Windows.Forms.Label memberIDLbl;
-        private System.Windows.Forms.TextBox idDetailTxt;
-        private System.Windows.Forms.TextBox nameDetailTxt;
         private System.Windows.Forms.Label memberNameLbl;
+        public Krypton.Toolkit.KryptonTextBox memberIDtxt;
+        public System.Windows.Forms.TextBox idDetailTxt;
+        public System.Windows.Forms.TextBox nameDetailTxt;
     }
 }

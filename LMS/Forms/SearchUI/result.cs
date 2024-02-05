@@ -8,27 +8,25 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace LMS.Forms
+namespace LMS.Forms.SearchUI
 {
-    public partial class borrowedBook : UserControl
+    public partial class result : UserControl
     {
         Book book;
-        public borrowedBook(Book book)
+        public result(Book book)
         {
             InitializeComponent();
             this.book = book;
-            this.borrowedDate.Value = new DateTime(2024, 10, 10);
         }
 
-        private void borrowedBook_Load(object sender, EventArgs e)
+        private void result_Load(object sender, EventArgs e)
         {
             this.titleTxt.Text = book.Title;
             this.isbnTxt.Text = book.ISBN;
             this.authorTxt.Text = book.Author;
             this.publishedYearTxt.Text = book.PublishhedYear.ToString();
-
-            this.returnDate.Visible = false;
-            this.borrowedDate.Visible = false;
+            if (this.book.Availability) { this.availabilityTxt.Text = "Book is Available to Borrow"; }
+            else this.availabilityTxt.Text = "Book is Currently Unavailable";
         }
     }
 }

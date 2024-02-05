@@ -30,9 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LibrarianWindow));
             this.navigationPanel = new System.Windows.Forms.Panel();
-            this.welcome = new System.Windows.Forms.Label();
-            this.adminName = new System.Windows.Forms.Label();
-            this.mainPanel = new System.Windows.Forms.Panel();
             this.logoutBtn = new System.Windows.Forms.Button();
             this.returnBtn = new System.Windows.Forms.Button();
             this.issueBtn = new System.Windows.Forms.Button();
@@ -40,7 +37,10 @@
             this.manageMembersBtn = new System.Windows.Forms.Button();
             this.browseBooksBtn = new System.Windows.Forms.Button();
             this.homeBtn = new System.Windows.Forms.Button();
+            this.welcome = new System.Windows.Forms.Label();
+            this.adminName = new System.Windows.Forms.Label();
             this.adminImg = new System.Windows.Forms.PictureBox();
+            this.mainPanel = new System.Windows.Forms.Panel();
             this.navigationPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.adminImg)).BeginInit();
             this.SuspendLayout();
@@ -65,37 +65,6 @@
             this.navigationPanel.Name = "navigationPanel";
             this.navigationPanel.Size = new System.Drawing.Size(300, 729);
             this.navigationPanel.TabIndex = 0;
-            // 
-            // welcome
-            // 
-            this.welcome.AutoSize = true;
-            this.welcome.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.welcome.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(246)))));
-            this.welcome.Location = new System.Drawing.Point(147, 102);
-            this.welcome.Name = "welcome";
-            this.welcome.Size = new System.Drawing.Size(91, 17);
-            this.welcome.TabIndex = 0;
-            this.welcome.Text = "Welcome Back";
-            // 
-            // adminName
-            // 
-            this.adminName.AutoSize = true;
-            this.adminName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(246)))));
-            this.adminName.Location = new System.Drawing.Point(146, 119);
-            this.adminName.Name = "adminName";
-            this.adminName.Size = new System.Drawing.Size(62, 21);
-            this.adminName.TabIndex = 0;
-            this.adminName.Text = "Dilanka";
-            // 
-            // mainPanel
-            // 
-            this.mainPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(246)))));
-            this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainPanel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mainPanel.Location = new System.Drawing.Point(300, 0);
-            this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(1050, 729);
-            this.mainPanel.TabIndex = 1;
             // 
             // logoutBtn
             // 
@@ -237,6 +206,27 @@
             this.homeBtn.UseVisualStyleBackColor = true;
             this.homeBtn.Click += new System.EventHandler(this.homeBtn_Click);
             // 
+            // welcome
+            // 
+            this.welcome.AutoSize = true;
+            this.welcome.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.welcome.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(246)))));
+            this.welcome.Location = new System.Drawing.Point(147, 102);
+            this.welcome.Name = "welcome";
+            this.welcome.Size = new System.Drawing.Size(91, 17);
+            this.welcome.TabIndex = 0;
+            this.welcome.Text = "Welcome Back";
+            // 
+            // adminName
+            // 
+            this.adminName.AutoSize = true;
+            this.adminName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(246)))));
+            this.adminName.Location = new System.Drawing.Point(146, 119);
+            this.adminName.Name = "adminName";
+            this.adminName.Size = new System.Drawing.Size(62, 21);
+            this.adminName.TabIndex = 0;
+            this.adminName.Text = "Dilanka";
+            // 
             // adminImg
             // 
             this.adminImg.Image = global::LMS.Properties.Resources.librarianProfileImg;
@@ -247,6 +237,16 @@
             this.adminImg.TabIndex = 0;
             this.adminImg.TabStop = false;
             // 
+            // mainPanel
+            // 
+            this.mainPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(246)))));
+            this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainPanel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mainPanel.Location = new System.Drawing.Point(300, 0);
+            this.mainPanel.Name = "mainPanel";
+            this.mainPanel.Size = new System.Drawing.Size(1050, 729);
+            this.mainPanel.TabIndex = 1;
+            // 
             // LibrarianWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -256,6 +256,7 @@
             this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.navigationPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(1366, 768);
             this.Name = "LibrarianWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Library Management System";

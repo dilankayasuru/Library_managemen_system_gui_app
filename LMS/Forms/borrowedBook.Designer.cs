@@ -185,6 +185,7 @@
             this.Name = "borrowedBook";
             this.Padding = new System.Windows.Forms.Padding(10);
             this.Size = new System.Drawing.Size(960, 182);
+            this.Load += new System.EventHandler(this.borrowedBook_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bookImg)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

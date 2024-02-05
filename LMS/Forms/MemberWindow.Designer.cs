@@ -37,7 +37,7 @@
             this.browseBooksBtn = new System.Windows.Forms.Button();
             this.homeBtn = new System.Windows.Forms.Button();
             this.welcome = new System.Windows.Forms.Label();
-            this.adminName = new System.Windows.Forms.Label();
+            this.memberName = new System.Windows.Forms.Label();
             this.adminImg = new System.Windows.Forms.PictureBox();
             this.mainPanel = new System.Windows.Forms.Panel();
             this.navigationPanel.SuspendLayout();
@@ -54,7 +54,7 @@
             this.navigationPanel.Controls.Add(this.browseBooksBtn);
             this.navigationPanel.Controls.Add(this.homeBtn);
             this.navigationPanel.Controls.Add(this.welcome);
-            this.navigationPanel.Controls.Add(this.adminName);
+            this.navigationPanel.Controls.Add(this.memberName);
             this.navigationPanel.Controls.Add(this.adminImg);
             this.navigationPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.navigationPanel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -195,15 +195,15 @@
             this.welcome.TabIndex = 0;
             this.welcome.Text = "Welcome Back";
             // 
-            // adminName
+            // memberName
             // 
-            this.adminName.AutoSize = true;
-            this.adminName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(246)))));
-            this.adminName.Location = new System.Drawing.Point(146, 119);
-            this.adminName.Name = "adminName";
-            this.adminName.Size = new System.Drawing.Size(62, 21);
-            this.adminName.TabIndex = 0;
-            this.adminName.Text = "Dilanka";
+            this.memberName.AutoSize = true;
+            this.memberName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(246)))));
+            this.memberName.Location = new System.Drawing.Point(146, 119);
+            this.memberName.Name = "memberName";
+            this.memberName.Size = new System.Drawing.Size(62, 21);
+            this.memberName.TabIndex = 0;
+            this.memberName.Text = "Dilanka";
             // 
             // adminImg
             // 
@@ -232,6 +232,7 @@
             this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.navigationPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(1366, 768);
             this.Name = "MemberWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Library Management System";
@@ -251,7 +252,7 @@
         private System.Windows.Forms.Button browseBooksBtn;
         private System.Windows.Forms.Button homeBtn;
         private System.Windows.Forms.Label welcome;
-        private System.Windows.Forms.Label adminName;
+        private System.Windows.Forms.Label memberName;
         private System.Windows.Forms.PictureBox adminImg;
         private System.Windows.Forms.Panel mainPanel;
         private System.Windows.Forms.Button borrowedBooksBtn;

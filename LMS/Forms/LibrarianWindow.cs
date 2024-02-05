@@ -12,10 +12,31 @@ namespace LMS.Forms
 {
     public partial class LibrarianWindow : Form
     {
-        public LibrarianWindow()
+        Librarian activeUser;
+        Library library;
+        public LibrarianWindow(Librarian activeUser, Library library)
         {
+            this.activeUser = activeUser;
+            this.library = library;
             InitializeComponent();
-            switchTabs(new LibrarianHome());
+            initializeWindow();
+            switchTabs(new LibrarianHome(library));
+
+
+            this.FormClosing += LibrarianWindow_FormClosing;
+            this.FormClosed += LibrarianWindow_FormClosed;
+        }
+
+        private void LibrarianWindow_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (MessageBox.Show("Are you realy want to Exit the Application", "Close", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
+        }
+        private void LibrarianWindow_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
 
         public void switchTabs(UserControl userControlForm)
@@ -26,42 +47,48 @@ namespace LMS.Forms
             userControlForm.BringToFront();
         }
 
+        public void initializeWindow()
+        {
+            this.adminName.Text = activeUser.FirstName;
+        }
+
         private void homeBtn_Click(object sender, EventArgs e)
         {
-            switchTabs(new LibrarianHome());
+            switchTabs(new LibrarianHome(library));
         }
 
         private void browseBooksBtn_Click(object sender, EventArgs e)
         {
-            switchTabs(new BrowseBooks());
+            switchTabs(new BrowseBooks(library));
         }
 
         private void manageMembersBtn_Click(object sender, EventArgs e)
         {
-            switchTabs(new ManageMembers());
+            switchTabs(new ManageMembers(activeUser));
         }
 
         private void manageBooksBtn_Click(object sender, EventArgs e)
         {
-            switchTabs(new ManageBooks());
+            switchTabs(new ManageBooks(library));
         }
 
         private void issueBtn_Click(object sender, EventArgs e)
         {
-            IssueBook window = new IssueBook();
+            IssueBook window = new IssueBook(activeUser);
             window.ShowDialog();
         }
 
         private void returnBtn_Click(object sender, EventArgs e)
         {
-            ReturnBook window = new ReturnBook();
+            ReturnBook window = new ReturnBook(activeUser);
             window.ShowDialog();
         }
 
         private void logoutBtn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            MainWindow window = new MainWindow();
+            activeUser = null;
+            MainWindow window = new MainWindow(library);
             window.Show();
         }
     }

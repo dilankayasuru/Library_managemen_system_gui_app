@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BrowseBooks));
             this.headerText = new System.Windows.Forms.Label();
             this.filterComboBox = new System.Windows.Forms.ComboBox();
-            this.searchBtn = new Krypton.Toolkit.KryptonButton();
             this.searchTxt = new Krypton.Toolkit.KryptonTextBox();
-            this.availableBooksCheckBox = new System.Windows.Forms.CheckBox();
             this.booksDataGridView = new System.Windows.Forms.DataGridView();
+            this.refreshbtn = new System.Windows.Forms.Button();
+            this.filterLbl = new System.Windows.Forms.Label();
+            this.availbilityFilterComboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.booksDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,63 +56,11 @@
             this.filterComboBox.Items.AddRange(new object[] {
             "Title",
             "ISBN"});
-            this.filterComboBox.Location = new System.Drawing.Point(224, 58);
+            this.filterComboBox.Location = new System.Drawing.Point(269, 58);
             this.filterComboBox.Name = "filterComboBox";
             this.filterComboBox.Size = new System.Drawing.Size(68, 29);
             this.filterComboBox.TabIndex = 3;
-            // 
-            // searchBtn
-            // 
-            this.searchBtn.CornerRoundingRadius = 20F;
-            this.searchBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.searchBtn.Location = new System.Drawing.Point(743, 54);
-            this.searchBtn.Name = "searchBtn";
-            this.searchBtn.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(178)))), ((int)(((byte)(73)))));
-            this.searchBtn.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(178)))), ((int)(((byte)(73)))));
-            this.searchBtn.OverrideDefault.Back.GraphicsHint = Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.searchBtn.OverrideDefault.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(178)))), ((int)(((byte)(73)))));
-            this.searchBtn.OverrideDefault.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(178)))), ((int)(((byte)(73)))));
-            this.searchBtn.OverrideDefault.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.searchBtn.OverrideDefault.Border.GraphicsHint = Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.searchBtn.OverrideDefault.Border.Rounding = 20F;
-            this.searchBtn.OverrideDefault.Border.Width = 1;
-            this.searchBtn.OverrideDefault.Content.ShortText.Color1 = System.Drawing.Color.White;
-            this.searchBtn.OverrideDefault.Content.ShortText.Color2 = System.Drawing.Color.White;
-            this.searchBtn.OverrideDefault.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchBtn.OverrideFocus.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(160)))), ((int)(((byte)(73)))));
-            this.searchBtn.OverrideFocus.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(160)))), ((int)(((byte)(73)))));
-            this.searchBtn.OverrideFocus.Back.GraphicsHint = Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.searchBtn.OverrideFocus.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(160)))), ((int)(((byte)(73)))));
-            this.searchBtn.OverrideFocus.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(160)))), ((int)(((byte)(73)))));
-            this.searchBtn.OverrideFocus.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.searchBtn.OverrideFocus.Border.Rounding = 20F;
-            this.searchBtn.OverrideFocus.Border.Width = 1;
-            this.searchBtn.OverrideFocus.Content.ShortText.Color1 = System.Drawing.Color.White;
-            this.searchBtn.OverrideFocus.Content.ShortText.Color2 = System.Drawing.Color.White;
-            this.searchBtn.OverrideFocus.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchBtn.PaletteMode = Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.searchBtn.Size = new System.Drawing.Size(83, 36);
-            this.searchBtn.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(178)))), ((int)(((byte)(73)))));
-            this.searchBtn.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(178)))), ((int)(((byte)(73)))));
-            this.searchBtn.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(178)))), ((int)(((byte)(73)))));
-            this.searchBtn.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(178)))), ((int)(((byte)(73)))));
-            this.searchBtn.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.searchBtn.StateCommon.Border.GraphicsHint = Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.searchBtn.StateCommon.Border.Rounding = 20F;
-            this.searchBtn.StateCommon.Border.Width = 1;
-            this.searchBtn.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
-            this.searchBtn.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
-            this.searchBtn.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchBtn.StateNormal.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(178)))), ((int)(((byte)(73)))));
-            this.searchBtn.StateNormal.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(178)))), ((int)(((byte)(73)))));
-            this.searchBtn.TabIndex = 2;
-            this.searchBtn.Values.Text = "Search";
+            this.filterComboBox.SelectedIndexChanged += new System.EventHandler(this.filterComboBox_SelectedIndexChanged);
             // 
             // searchTxt
             // 
@@ -121,7 +71,7 @@
             this.searchTxt.CueHint.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.searchTxt.CueHint.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
             this.searchTxt.Cursor = System.Windows.Forms.Cursors.Default;
-            this.searchTxt.Location = new System.Drawing.Point(300, 54);
+            this.searchTxt.Location = new System.Drawing.Point(345, 54);
             this.searchTxt.Name = "searchTxt";
             this.searchTxt.Size = new System.Drawing.Size(437, 36);
             this.searchTxt.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
@@ -134,34 +84,72 @@
             this.searchTxt.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.searchTxt.StateNormal.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.searchTxt.TabIndex = 1;
-            // 
-            // availableBooksCheckBox
-            // 
-            this.availableBooksCheckBox.AutoSize = true;
-            this.availableBooksCheckBox.Location = new System.Drawing.Point(435, 100);
-            this.availableBooksCheckBox.Name = "availableBooksCheckBox";
-            this.availableBooksCheckBox.Size = new System.Drawing.Size(181, 25);
-            this.availableBooksCheckBox.TabIndex = 4;
-            this.availableBooksCheckBox.Text = "Show Available Books";
-            this.availableBooksCheckBox.UseVisualStyleBackColor = true;
+            this.searchTxt.TextChanged += new System.EventHandler(this.searchTxt_TextChanged);
             // 
             // booksDataGridView
             // 
+            this.booksDataGridView.AllowUserToAddRows = false;
+            this.booksDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.booksDataGridView.BackgroundColor = System.Drawing.Color.White;
             this.booksDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.booksDataGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.booksDataGridView.Location = new System.Drawing.Point(15, 159);
             this.booksDataGridView.Name = "booksDataGridView";
+            this.booksDataGridView.ReadOnly = true;
+            this.booksDataGridView.RowHeadersWidth = 51;
             this.booksDataGridView.Size = new System.Drawing.Size(1020, 554);
             this.booksDataGridView.TabIndex = 0;
+            // 
+            // refreshbtn
+            // 
+            this.refreshbtn.BackColor = System.Drawing.Color.Transparent;
+            this.refreshbtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.refreshbtn.FlatAppearance.BorderSize = 0;
+            this.refreshbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.refreshbtn.Image = ((System.Drawing.Image)(resources.GetObject("refreshbtn.Image")));
+            this.refreshbtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.refreshbtn.Location = new System.Drawing.Point(928, 117);
+            this.refreshbtn.Name = "refreshbtn";
+            this.refreshbtn.Size = new System.Drawing.Size(104, 36);
+            this.refreshbtn.TabIndex = 5;
+            this.refreshbtn.Text = "Refresh";
+            this.refreshbtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.refreshbtn.UseVisualStyleBackColor = false;
+            this.refreshbtn.Click += new System.EventHandler(this.refreshbtn_Click);
+            // 
+            // filterLbl
+            // 
+            this.filterLbl.AutoSize = true;
+            this.filterLbl.Location = new System.Drawing.Point(19, 124);
+            this.filterLbl.Name = "filterLbl";
+            this.filterLbl.Size = new System.Drawing.Size(73, 21);
+            this.filterLbl.TabIndex = 6;
+            this.filterLbl.Text = "Filter By: ";
+            // 
+            // availbilityFilterComboBox
+            // 
+            this.availbilityFilterComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.availbilityFilterComboBox.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.availbilityFilterComboBox.FormattingEnabled = true;
+            this.availbilityFilterComboBox.Items.AddRange(new object[] {
+            "Show All Books",
+            "Show Available Books",
+            "Show Unavailable Books"});
+            this.availbilityFilterComboBox.Location = new System.Drawing.Point(98, 120);
+            this.availbilityFilterComboBox.Name = "availbilityFilterComboBox";
+            this.availbilityFilterComboBox.Size = new System.Drawing.Size(186, 28);
+            this.availbilityFilterComboBox.TabIndex = 7;
+            this.availbilityFilterComboBox.SelectedIndexChanged += new System.EventHandler(this.availbilityFilterComboBox_SelectedIndexChanged);
             // 
             // BrowseBooks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(246)))));
+            this.Controls.Add(this.availbilityFilterComboBox);
+            this.Controls.Add(this.filterLbl);
+            this.Controls.Add(this.refreshbtn);
             this.Controls.Add(this.booksDataGridView);
-            this.Controls.Add(this.availableBooksCheckBox);
-            this.Controls.Add(this.searchBtn);
             this.Controls.Add(this.searchTxt);
             this.Controls.Add(this.filterComboBox);
             this.Controls.Add(this.headerText);
@@ -180,9 +168,10 @@
 
         private System.Windows.Forms.Label headerText;
         private System.Windows.Forms.ComboBox filterComboBox;
-        private Krypton.Toolkit.KryptonButton searchBtn;
         private Krypton.Toolkit.KryptonTextBox searchTxt;
-        private System.Windows.Forms.CheckBox availableBooksCheckBox;
         private System.Windows.Forms.DataGridView booksDataGridView;
+        private System.Windows.Forms.Button refreshbtn;
+        private System.Windows.Forms.Label filterLbl;
+        private System.Windows.Forms.ComboBox availbilityFilterComboBox;
     }
 }

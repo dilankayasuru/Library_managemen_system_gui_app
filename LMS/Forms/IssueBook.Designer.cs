@@ -91,6 +91,7 @@
             this.memberIDtxt.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.memberIDtxt.StateNormal.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.memberIDtxt.TabIndex = 2;
+            this.memberIDtxt.TextChanged += new System.EventHandler(this.memberIDtxt_TextChanged);
             // 
             // ISBNTxt
             // 
@@ -114,6 +115,7 @@
             this.ISBNTxt.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.ISBNTxt.StateNormal.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.ISBNTxt.TabIndex = 1;
+            this.ISBNTxt.TextChanged += new System.EventHandler(this.ISBNTxt_TextChanged);
             // 
             // issueBtn
             // 
@@ -167,6 +169,7 @@
             this.issueBtn.StateNormal.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(178)))), ((int)(((byte)(73)))));
             this.issueBtn.TabIndex = 3;
             this.issueBtn.Values.Text = "Issue";
+            this.issueBtn.Click += new System.EventHandler(this.issueBtn_Click);
             // 
             // headerText
             // 
@@ -279,7 +282,6 @@
             // 
             // publishedYearDetailTxt
             // 
-            this.publishedYearDetailTxt.Enabled = false;
             this.publishedYearDetailTxt.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.publishedYearDetailTxt.Location = new System.Drawing.Point(51, 458);
             this.publishedYearDetailTxt.Name = "publishedYearDetailTxt";
@@ -300,7 +302,6 @@
             // 
             // authorDetailTxt
             // 
-            this.authorDetailTxt.Enabled = false;
             this.authorDetailTxt.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.authorDetailTxt.Location = new System.Drawing.Point(51, 407);
             this.authorDetailTxt.Name = "authorDetailTxt";
@@ -332,7 +333,6 @@
             // 
             // isbnDetailTxt
             // 
-            this.isbnDetailTxt.Enabled = false;
             this.isbnDetailTxt.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.isbnDetailTxt.Location = new System.Drawing.Point(51, 356);
             this.isbnDetailTxt.Name = "isbnDetailTxt";
@@ -353,7 +353,6 @@
             // 
             // titleDetailTxt
             // 
-            this.titleDetailTxt.Enabled = false;
             this.titleDetailTxt.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.titleDetailTxt.Location = new System.Drawing.Point(51, 305);
             this.titleDetailTxt.Name = "titleDetailTxt";
@@ -385,7 +384,6 @@
             // 
             // idDetailTxt
             // 
-            this.idDetailTxt.Enabled = false;
             this.idDetailTxt.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.idDetailTxt.Location = new System.Drawing.Point(51, 186);
             this.idDetailTxt.Name = "idDetailTxt";
@@ -395,7 +393,6 @@
             // 
             // nameDetailTxt
             // 
-            this.nameDetailTxt.Enabled = false;
             this.nameDetailTxt.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nameDetailTxt.Location = new System.Drawing.Point(51, 134);
             this.nameDetailTxt.Name = "nameDetailTxt";
@@ -429,6 +426,7 @@
             this.Name = "IssueBook";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Issue Books";
+            this.Load += new System.EventHandler(this.IssueBook_Load);
             this.mainPanel.ResumeLayout(false);
             this.mainPanel.PerformLayout();
             this.detailsPanel.ResumeLayout(false);
@@ -442,8 +440,6 @@
         private System.Windows.Forms.Label headerText;
         private Krypton.Toolkit.KryptonButton issueBtn;
         private Krypton.Toolkit.KryptonButton cancelBtn;
-        private Krypton.Toolkit.KryptonTextBox memberIDtxt;
-        private Krypton.Toolkit.KryptonTextBox ISBNTxt;
         private System.Windows.Forms.Panel detailsPanel;
         private System.Windows.Forms.Label publishedYearLbl;
         private System.Windows.Forms.TextBox publishedYearDetailTxt;
@@ -456,8 +452,10 @@
         private System.Windows.Forms.TextBox titleDetailTxt;
         private System.Windows.Forms.Label memberDetailsLbl;
         private System.Windows.Forms.Label memberIDLbl;
-        private System.Windows.Forms.TextBox idDetailTxt;
-        private System.Windows.Forms.TextBox nameDetailTxt;
         private System.Windows.Forms.Label memberNameLbl;
+        public Krypton.Toolkit.KryptonTextBox memberIDtxt;
+        public System.Windows.Forms.TextBox idDetailTxt;
+        public System.Windows.Forms.TextBox nameDetailTxt;
+        private Krypton.Toolkit.KryptonTextBox ISBNTxt;
     }
 }

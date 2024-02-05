@@ -12,16 +12,34 @@ namespace LMS.Forms
 {
     public partial class ShowBorrowedBooks : UserControl
     {
-        public ShowBorrowedBooks()
+        Member member;
+        public List<Book> borrowedBooksList = new List<Book>();
+        public ShowBorrowedBooks(Member member)
         {
+            this.member = member;
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void ShowBorrowedBooks_Load(object sender, EventArgs e)
         {
-            if (borrowedBooksPanel.Controls.Count < 2)
+            displayBorrowedBooks();
+        }
+
+        private void refreshbtn_Click(object sender, EventArgs e)
+        {
+            displayBorrowedBooks();
+        }
+
+        private void displayBorrowedBooks()
+        {
+            this.borrowedBooksPanel.Controls.Clear();
+            borrowedBooksList = member.showBorrowedBooks();
+            if (borrowedBooksList != null)
             {
-                borrowedBooksPanel.Controls.Add(new borrowedBook());
+                foreach (Book book in borrowedBooksList)
+                {
+                    borrowedBooksPanel.Controls.Add(new borrowedBook(book));
+                }
             }
         }
     }

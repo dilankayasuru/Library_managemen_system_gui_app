@@ -30,7 +30,7 @@
         {
             this.headerText = new System.Windows.Forms.Label();
             this.borrowedBooksPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.refreshbtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // headerText
@@ -51,22 +51,29 @@
             this.borrowedBooksPanel.Size = new System.Drawing.Size(960, 610);
             this.borrowedBooksPanel.TabIndex = 2;
             // 
-            // button1
+            // refreshbtn
             // 
-            this.button1.Location = new System.Drawing.Point(907, 13);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(98, 31);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.refreshbtn.BackColor = System.Drawing.Color.Transparent;
+            this.refreshbtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.refreshbtn.FlatAppearance.BorderSize = 0;
+            this.refreshbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.refreshbtn.Image = global::LMS.Properties.Resources.refreshIcon;
+            this.refreshbtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.refreshbtn.Location = new System.Drawing.Point(901, 13);
+            this.refreshbtn.Name = "refreshbtn";
+            this.refreshbtn.Size = new System.Drawing.Size(104, 36);
+            this.refreshbtn.TabIndex = 6;
+            this.refreshbtn.Text = "Refresh";
+            this.refreshbtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.refreshbtn.UseVisualStyleBackColor = false;
+            this.refreshbtn.Click += new System.EventHandler(this.refreshbtn_Click);
             // 
             // ShowBorrowedBooks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(246)))));
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.refreshbtn);
             this.Controls.Add(this.borrowedBooksPanel);
             this.Controls.Add(this.headerText);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -74,6 +81,7 @@
             this.Name = "ShowBorrowedBooks";
             this.Padding = new System.Windows.Forms.Padding(10);
             this.Size = new System.Drawing.Size(1050, 729);
+            this.Load += new System.EventHandler(this.ShowBorrowedBooks_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -83,6 +91,6 @@
 
         private System.Windows.Forms.Label headerText;
         private System.Windows.Forms.FlowLayoutPanel borrowedBooksPanel;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button refreshbtn;
     }
 }
