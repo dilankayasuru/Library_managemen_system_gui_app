@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static MongoDB.Bson.Serialization.Serializers.SerializerHelper;
 
 namespace LMS.Forms
 {
@@ -46,19 +47,29 @@ namespace LMS.Forms
 
         private void returnBtn_Click(object sender, EventArgs e)
         {
-            if (activeUser is Member)
+            if (!((this.ISBNTxt.Text == "") && (this.memberIDtxt.Text == "")))
             {
-                Member member = activeUser as Member;
-                member.returnBook(this.ISBNTxt.Text);
-                clearTexts();
-                
+                if (activeUser is Member)
+                {
+                    Member member = activeUser as Member;
+                    member.returnBook(this.ISBNTxt.Text);
+                    member.recordTransaction(transactionType.returned, member, this.ISBNTxt.Text);
+                    clearTexts();
+
+                }
+                else
+                {
+                    Librarian librarian = activeUser as Librarian;
+                    librarian.returnBook(this.ISBNTxt.Text, this.memberIDtxt.Text);
+                    librarian.recordTransaction(transactionType.returned, librarian, this.ISBNTxt.Text, this.memberIDtxt.Text);
+                    clearTexts();
+                }
             }
             else
             {
-                Librarian librarian = activeUser as Librarian;
-                librarian.returnBook(this.ISBNTxt.Text, this.memberIDtxt.Text);
-                clearTexts();
+                MessageBox.Show("Please enter valid details!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
 
         private void ISBNTxt_TextChanged(object sender, EventArgs e)

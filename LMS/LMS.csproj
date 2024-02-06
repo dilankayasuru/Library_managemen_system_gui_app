@@ -228,6 +228,12 @@
     <Compile Include="Forms\ShowBorrowedBooks.Designer.cs">
       <DependentUpon>ShowBorrowedBooks.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\transactionWindow.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\transactionWindow.Designer.cs">
+      <DependentUpon>transactionWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Librarian.cs" />
     <Compile Include="Library.cs" />
     <Compile Include="LibraryDatabase.cs" />
@@ -286,6 +292,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ShowBorrowedBooks.resx">
       <DependentUpon>ShowBorrowedBooks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\transactionWindow.resx">
+      <DependentUpon>transactionWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

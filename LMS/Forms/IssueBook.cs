@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static MongoDB.Bson.Serialization.Serializers.SerializerHelper;
 
 namespace LMS.Forms
 {
@@ -49,17 +50,26 @@ namespace LMS.Forms
 
         private void issueBtn_Click(object sender, EventArgs e)
         {
-            if (activeUser is Member)
+            if (!((this.ISBNTxt.Text == "") && (this.memberIDtxt.Text == "")))
             {
-                Member member = activeUser as Member;
-                member.borrowBook(this.ISBNTxt.Text);
-                clearTexts();
+                if (activeUser is Member)
+                {
+                    Member member = activeUser as Member;
+                    member.borrowBook(this.ISBNTxt.Text);
+                    member.recordTransaction(transactionType.borrowed, member, this.ISBNTxt.Text);
+                    clearTexts();
+                }
+                else
+                {
+                    Librarian librarian = activeUser as Librarian;
+                    librarian.borrowBook(this.ISBNTxt.Text, this.memberIDtxt.Text);
+                    librarian.recordTransaction(transactionType.borrowed, librarian, this.ISBNTxt.Text, this.memberIDtxt.Text);
+                    clearTexts();
+                }
             }
             else
             {
-                Librarian librarian = activeUser as Librarian;
-                librarian.borrowBook(this.ISBNTxt.Text, this.memberIDtxt.Text);
-                clearTexts();
+                MessageBox.Show("Please enter valid details!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -105,6 +115,7 @@ namespace LMS.Forms
             {
                 this.headerText.Text = "Borrow Books";
                 this.Text = "Borrow Books";
+                this.issueBtn.Text = "Borrow";
             }
         }
     }

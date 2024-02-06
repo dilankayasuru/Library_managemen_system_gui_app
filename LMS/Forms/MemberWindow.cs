@@ -82,7 +82,7 @@ namespace LMS.Forms
         private void returnBtn_Click(object sender, EventArgs e)
         {
             ReturnBook window = new ReturnBook(activeUser);
-            window.memberIDtxt.Text=activeUser.Id;
+            window.memberIDtxt.Text = activeUser.Id;
             window.memberIDtxt.Enabled = false;
             window.nameDetailTxt.Text = $"{activeUser.FirstName} {activeUser.LastName}";
             window.idDetailTxt.Text = activeUser.Id;
@@ -92,8 +92,8 @@ namespace LMS.Forms
         private void borrowedBooksBtn_Click(object sender, EventArgs e)
         {
             ShowBorrowedBooks userControlForm = new ShowBorrowedBooks(activeUser);
-            
-            if (userControlForm.borrowedBooksList.Count <= 0)
+
+            if (activeUser.BorrowedBooksISBN.Count <= 0)
             {
                 MessageBox.Show("You have not borrowed any book yet!", "No Borrowed Books", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }

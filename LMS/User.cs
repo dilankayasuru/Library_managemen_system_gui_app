@@ -25,6 +25,7 @@ public abstract class User
     {
         get { return id; }
         set { id = value; }
+
     }
 
     public string UserName
@@ -68,7 +69,7 @@ public abstract class User
 
     public bool userLogin(string username, string password)
     {
-        if (this.userName == username && this.password == password )
+        if (this.userName == username && this.password == password)
         {
             return true;
         }
@@ -82,4 +83,19 @@ public abstract class User
 
     public abstract void returnBook(string isbn, string memberID);
 
+    public void recordTransaction(transactionType transactionType, object user, string isbn, string memberID = "")
+    {
+        Book book = LibraryDatabase.getRecordBy<Book>("ISBN", isbn, "Books");
+        Transaction transaction;
+        if (user is Librarian)
+        {
+            Member member = LibraryDatabase.getRecordBy<User>("Users", memberID) as Member;
+            transaction = new Transaction(member, this as Librarian, book, transactionType);
+        }
+        else
+        {
+            transaction = new Transaction(user as Member, book, transactionType);
+        }
+        LibraryDatabase.insertRecord<Transaction>("Transaction", transaction);
+    }
 }

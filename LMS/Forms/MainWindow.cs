@@ -63,5 +63,10 @@ namespace LMS.Forms
             window.ShowDialog();
             this.searchTxt.Clear();
         }
+
+        private void searchTxt_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
