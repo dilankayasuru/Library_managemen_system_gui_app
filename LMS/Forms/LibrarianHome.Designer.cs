@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LibrarianHome));
             this.headerText = new System.Windows.Forms.Label();
             this.totalBookPanel = new System.Windows.Forms.Panel();
             this.totalBookCount = new System.Windows.Forms.Label();
@@ -45,6 +46,7 @@
             this.transactionPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.filterComboBox = new System.Windows.Forms.ComboBox();
             this.filterLbl = new System.Windows.Forms.Label();
+            this.refreshbtn = new System.Windows.Forms.Button();
             this.totalBookPanel.SuspendLayout();
             this.availableBookPanel.SuspendLayout();
             this.issuedBooksPanel.SuspendLayout();
@@ -232,11 +234,29 @@
             this.filterLbl.TabIndex = 10;
             this.filterLbl.Text = "Filter: ";
             // 
+            // refreshbtn
+            // 
+            this.refreshbtn.BackColor = System.Drawing.Color.Transparent;
+            this.refreshbtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.refreshbtn.FlatAppearance.BorderSize = 0;
+            this.refreshbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.refreshbtn.Image = ((System.Drawing.Image)(resources.GetObject("refreshbtn.Image")));
+            this.refreshbtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.refreshbtn.Location = new System.Drawing.Point(902, 13);
+            this.refreshbtn.Name = "refreshbtn";
+            this.refreshbtn.Size = new System.Drawing.Size(104, 36);
+            this.refreshbtn.TabIndex = 11;
+            this.refreshbtn.Text = "Refresh";
+            this.refreshbtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.refreshbtn.UseVisualStyleBackColor = false;
+            this.refreshbtn.Click += new System.EventHandler(this.refreshbtn_Click);
+            // 
             // LibrarianHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(246)))));
+            this.Controls.Add(this.refreshbtn);
             this.Controls.Add(this.filterLbl);
             this.Controls.Add(this.filterComboBox);
             this.Controls.Add(this.transactionPanel);
@@ -284,5 +304,6 @@
         private System.Windows.Forms.FlowLayoutPanel transactionPanel;
         private System.Windows.Forms.ComboBox filterComboBox;
         private System.Windows.Forms.Label filterLbl;
+        private System.Windows.Forms.Button refreshbtn;
     }
 }

@@ -31,7 +31,7 @@ static class LibraryDatabase
         var collection = database.GetCollection<classType>(table);
         var filter = Builders<classType>.Filter.Eq("Id", id);
 
-        return collection.Find(filter).First();
+        return collection.Find(filter).FirstOrDefault();
     }
 
     public static classType getRecordBy<classType>(string filterKey, string keyword, string table)
@@ -39,7 +39,7 @@ static class LibraryDatabase
         var collection = database.GetCollection<classType>(table);
         var filter = Builders<classType>.Filter.Eq(filterKey, keyword);
 
-        return collection.Find(filter).First();
+        return collection.Find(filter).FirstOrDefault();
     }
 
     // Update or Insert

@@ -25,7 +25,7 @@ namespace LMS
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainWindow(new Library()));
-            //Application.Run(new LibrarianWindow());
+            ////Application.Run(new LibrarianWindow());
             //Application.Run(new MemberWindow(new Member("sada", "asd", "asd", "asd", "asd")));
         }
     }

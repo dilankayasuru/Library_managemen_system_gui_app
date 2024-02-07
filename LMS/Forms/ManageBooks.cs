@@ -35,7 +35,7 @@ namespace LMS.Forms
             bookList = library.getAllBooks();
 
             bookDataTable = new DataTable();
-           
+
             bookDataTable.Columns.Add("Book ID", typeof(string));
             bookDataTable.Columns.Add("Title", typeof(string));
             bookDataTable.Columns.Add("ISBN", typeof(string));
@@ -111,7 +111,7 @@ namespace LMS.Forms
 
         private void deleteBtn_Click(object sender, EventArgs e)
         {
-            if (this.bookTitleTxt.Text != "")
+            if (validateTextInputs())
             {
                 if (MessageBox.Show($"Are you sure you want to delete this {this.bookTitleTxt.Text} Book!", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
@@ -130,7 +130,7 @@ namespace LMS.Forms
             }
             else
             {
-                MessageBox.Show("Please enter valid information!", "Invalid Information!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please enter valid information!\nHint: Keep valid information inputs unchanged to delete the Book", "Invalid Information!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 clearTexts();
             }
         }
@@ -147,18 +147,14 @@ namespace LMS.Forms
 
         private void saveBtn_Click(object sender, EventArgs e)
         {
-            if (this.bookIdTxt.Text == "" || this.bookTitleTxt.Text == "" || this.ISBNTxt.Text == "" || this.authorTxt.Text == "" || this.publishedYearTxt.Text == "" || this.copiesTxt.Text =="")
-            {
-                MessageBox.Show("Please enter valid information!", "Invalid Information!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
+            if (validateTextInputs(this.bookIdTxt.Text))
             {
                 try
                 {
                     int publishedYear = int.Parse(this.publishedYearTxt.Text);
                     int copies = int.Parse(this.copiesTxt.Text);
 
-                    library.editBookDetails(this.bookIdTxt.Text, this.bookTitleTxt.Text, this.ISBNTxt.Text, this.authorTxt.Text, publishedYear, copies);
+                    library.editBookDetails(this.bookIdTxt.Text.Trim(), this.bookTitleTxt.Text.Trim(), this.ISBNTxt.Text.Trim(), this.authorTxt.Text.Trim(), publishedYear, copies);
                     initializeTable();
                     clearTexts();
                 }
@@ -175,6 +171,34 @@ namespace LMS.Forms
                     clearTexts();
                 }
             }
+            else
+            {
+                MessageBox.Show("Please enter valid information!\n\nHint: Keep valid information inputs unchanged to delete the Book", "Invalid Information!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                clearTexts();
+            }
+        }
+
+        private bool validateTextInputs(string id)
+        {
+            Book book = LibraryDatabase.getRecordBy<Book>("Books", id);
+
+            return this.bookIdTxt.Text.Trim() != "" && bookIdTxt.Text == book.Title
+                && this.bookTitleTxt.Text.Trim() != "" && bookTitleTxt.Text == book.Title
+                && this.ISBNTxt.Text.Trim() != "" && ISBNTxt.Text == book.Title
+                && this.authorTxt.Text.Trim() != "" && authorTxt.Text == book.Title
+                && this.publishedYearTxt.Text.Trim() != "" && publishedYearTxt.Text == book.Title
+                && this.copiesTxt.Text.Trim() != "";
+        }        
+        
+        private bool validateTextInputs()
+        {
+
+            return this.bookIdTxt.Text.Trim() != ""
+                && this.bookTitleTxt.Text.Trim() != ""
+                && this.ISBNTxt.Text.Trim() != ""
+                && this.authorTxt.Text.Trim() != ""
+                && this.publishedYearTxt.Text.Trim() != ""
+                && this.copiesTxt.Text.Trim() != "";
         }
     }
 }

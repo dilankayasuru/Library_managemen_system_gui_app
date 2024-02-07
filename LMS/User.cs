@@ -67,9 +67,9 @@ public abstract class User
         LastName = lastName;
     }
 
-    public bool userLogin(string username, string password)
+    internal bool userLogin(string username, string password)
     {
-        if (this.userName == username && this.password == password)
+        if (this.UserName == username && this.password == password)
         {
             return true;
         }
@@ -83,19 +83,16 @@ public abstract class User
 
     public abstract void returnBook(string isbn, string memberID);
 
-    public void recordTransaction(transactionType transactionType, object user, string isbn, string memberID = "")
+    public void transactionRecord(string ISBN, Transaction_Type transactionType)
     {
-        Book book = LibraryDatabase.getRecordBy<Book>("ISBN", isbn, "Books");
-        Transaction transaction;
-        if (user is Librarian)
-        {
-            Member member = LibraryDatabase.getRecordBy<User>("Users", memberID) as Member;
-            transaction = new Transaction(member, this as Librarian, book, transactionType);
-        }
-        else
-        {
-            transaction = new Transaction(user as Member, book, transactionType);
-        }
+        Book book = LibraryDatabase.getRecordBy<Book>("ISBN", ISBN, "Books");
+        Transaction transaction = new Transaction(book, this as Member, transactionType);
+        LibraryDatabase.insertRecord<Transaction>("Transaction", transaction);
+    }    
+    public void transactionRecord(string ISBN, Transaction_Type transactionType, Member member)
+    {
+        Book book = LibraryDatabase.getRecordBy<Book>("ISBN", ISBN, "Books");
+        Transaction transaction = new Transaction(book, member, transactionType, this as Librarian);
         LibraryDatabase.insertRecord<Transaction>("Transaction", transaction);
     }
 }

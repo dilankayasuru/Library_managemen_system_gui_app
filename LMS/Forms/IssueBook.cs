@@ -37,39 +37,46 @@ namespace LMS.Forms
 
         private void clearTexts()
         {
-            this.ISBNTxt.Clear();
-            this.memberIDtxt.Clear();
-
             this.nameDetailTxt.Clear();
-            this.memberIDtxt.Clear();
+            this.ISBNTxt.Clear();
             this.titleDetailTxt.Clear();
             this.isbnDetailTxt.Clear();
             this.authorDetailTxt.Clear();
             this.publishedYearDetailTxt.Clear();
+
+            if (activeUser is Librarian)
+            {
+                this.memberIDtxt.Clear();
+            }
+
+        }
+
+        private bool isValidatedInputs()
+        {
+            return this.ISBNTxt.Text.Trim() != "" && this.memberIDtxt.Text.Trim() != "";
         }
 
         private void issueBtn_Click(object sender, EventArgs e)
         {
-            if (!((this.ISBNTxt.Text == "") && (this.memberIDtxt.Text == "")))
+            if (isValidatedInputs())
             {
                 if (activeUser is Member)
                 {
                     Member member = activeUser as Member;
                     member.borrowBook(this.ISBNTxt.Text);
-                    member.recordTransaction(transactionType.borrowed, member, this.ISBNTxt.Text);
                     clearTexts();
                 }
                 else
                 {
                     Librarian librarian = activeUser as Librarian;
                     librarian.borrowBook(this.ISBNTxt.Text, this.memberIDtxt.Text);
-                    librarian.recordTransaction(transactionType.borrowed, librarian, this.ISBNTxt.Text, this.memberIDtxt.Text);
                     clearTexts();
                 }
             }
             else
             {
                 MessageBox.Show("Please enter valid details!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                clearTexts();
             }
         }
 
@@ -96,7 +103,7 @@ namespace LMS.Forms
         private void memberIDtxt_TextChanged(object sender, EventArgs e)
         {
             Member member = LibraryDatabase.getRecords<User>("Users").Find(m => m.Id == this.memberIDtxt.Text) as Member;
-            
+
             if (member != null)
             {
                 this.idDetailTxt.Text = member.Id;

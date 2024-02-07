@@ -68,34 +68,58 @@ public class Librarian : User
     {
         try
         {
-            Member targetMember = LibraryDatabase.getRecordBy<User>("Users", memberId) as Member;
-            if (targetMember is Member)
+            var targetMember = LibraryDatabase.getRecordBy<User>("Users", memberId);
+            Book book = LibraryDatabase.getRecordBy<Book>("ISBN", isbn, "Books");
+
+            if (targetMember == null || book == null || targetMember is Librarian)
             {
-                targetMember.borrowBook(isbn, targetMember.Id);
+                MessageBox.Show("Book or Member not found in the Database!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                MessageBox.Show("Member not found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Member member = targetMember as Member;
+                if (member.BorrowedBooksISBN.Contains(book.ISBN) || member.BorrowedBooksISBN.Count >= 2)
+                {
+                    MessageBox.Show("Number of Borrowed Books Limit exceeded or Member has already borrowed this book", "Borrow Book Limit Reached", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    bool isBookBorrowed = book.borrowBook(member);
+                    if (isBookBorrowed)
+                    {
+                        this.transactionRecord(book.ISBN, Transaction_Type.Borrow_Book, member);
+                        MessageBox.Show("Book Issued Successfully!", "Book Issued", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    //member.BorrowedBooksISBN.Add(book.ISBN);
+                }
             }
         }
-        catch
+        catch (Exception ex)
         {
-            MessageBox.Show("Book or Member not found in the Database!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show($"{ex.Message} \n Help : {ex.HelpLink}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
+
     public override void returnBook(string isbn, string memberId)
     {
         try
         {
-            Member targetMember = LibraryDatabase.getRecordBy<User>("Users", memberId) as Member;
+            var targetMember = LibraryDatabase.getRecordBy<User>("Users", memberId);
+            Book book = LibraryDatabase.getRecordBy<Book>("ISBN", isbn, "Books");
             if (targetMember is Member)
             {
-                targetMember.returnBook(isbn, targetMember.Id);
+                Member member = targetMember as Member;
+                bool isBookReturned = book.returnBook(member);
+                if (isBookReturned)
+                {
+                    this.transactionRecord(book.ISBN, Transaction_Type.Return_Book, member);
+                    MessageBox.Show("Book Returned Successfully!", "Book Returned", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             else
             {
                 MessageBox.Show("Member not found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }   
+            }
         }
         catch
         {

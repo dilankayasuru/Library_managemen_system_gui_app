@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static MongoDB.Bson.Serialization.Serializers.SerializerHelper;
 
 public class Member : User
 {
@@ -37,17 +38,25 @@ public class Member : User
             else
             {
                 Book book = LibraryDatabase.getRecordBy<Book>("ISBN", isbn, "Books");
-                book.borrowBook(this);
-                this.BorrowedBooksISBN.Add(book.ISBN);
-                LibraryDatabase.updateRecord<Book>("Books", book.Id, book);
-                LibraryDatabase.updateRecord<User>("Users", this.Id, this);
-                MessageBox.Show("Book Issued Successfully!", "Book Issued", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (book != null)
+                {
+                    bool isBookBorrowed = book.borrowBook(this);
+                    if (isBookBorrowed)
+                    {
+                        this.transactionRecord(isbn, Transaction_Type.Borrow_Book);
+                        MessageBox.Show("Book Issued Successfully!", "Book Issued", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Book not found!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
             }
         }
         catch (Exception e)
         {
             MessageBox.Show($"Could not Borrow the Book!\n\n{e.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
         }
     }
 
@@ -58,22 +67,22 @@ public class Member : User
             if (this.borrowedBooksISBN.Contains(isbn))
             {
                 Book book = LibraryDatabase.getRecordBy<Book>("ISBN", isbn, "Books");
-                book.returnBook(this);
-                this.BorrowedBooksISBN.Remove(book.ISBN);
-                LibraryDatabase.updateRecord<Book>("Books", book.Id, book);
-                LibraryDatabase.updateRecord<User>("Users", this.Id, this);
-
-                MessageBox.Show("Book Returned Successfully!", "Book Returned", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                bool isBookBorrowed = book.returnBook(this);
+                if (isBookBorrowed)
+                {
+                    this.transactionRecord(isbn, Transaction_Type.Return_Book);
+                    MessageBox.Show("Book Returned Successfully!", "Book Returned", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             else
             {
                 MessageBox.Show("Member has not borrowed this Book!", "Book not Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
         catch (Exception e)
         {
-            MessageBox.Show($"Could not return the Book!\n\n{e.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show($"Could not return the Book!\n\n{e.Message}\nHelp: {e.HelpLink}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
         }
     }
 
@@ -83,7 +92,7 @@ public class Member : User
         {
             List<Book> books = new List<Book>();
 
-            foreach (var isbn in borrowedBooksISBN)
+            foreach (string isbn in borrowedBooksISBN)
             {
                 books.Add(LibraryDatabase.getRecordBy<Book>("ISBN", isbn, "Books"));
             }

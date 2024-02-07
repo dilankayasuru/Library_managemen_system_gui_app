@@ -35,25 +35,31 @@ namespace LMS.Forms
         private void clearTexts()
         {
             this.ISBNTxt.Clear();
-            this.memberIDtxt.Clear();
 
             this.nameDetailTxt.Clear();
-            this.memberIDtxt.Clear();
+            this.idDetailTxt.Clear();
             this.titleDetailTxt.Clear();
             this.isbnDetailTxt.Clear();
             this.authorDetailTxt.Clear();
             this.publishedYearDetailTxt.Clear();
-        }
 
+            if (activeUser is Librarian)
+            {
+                this.memberIDtxt.Clear();
+            }
+        }
+        private bool isValidatedInputs()
+        {
+            return this.ISBNTxt.Text.Trim() != "" && this.memberIDtxt.Text.Trim() != "";
+        }
         private void returnBtn_Click(object sender, EventArgs e)
         {
-            if (!((this.ISBNTxt.Text == "") && (this.memberIDtxt.Text == "")))
+            if (isValidatedInputs())
             {
                 if (activeUser is Member)
                 {
                     Member member = activeUser as Member;
                     member.returnBook(this.ISBNTxt.Text);
-                    member.recordTransaction(transactionType.returned, member, this.ISBNTxt.Text);
                     clearTexts();
 
                 }
@@ -61,13 +67,13 @@ namespace LMS.Forms
                 {
                     Librarian librarian = activeUser as Librarian;
                     librarian.returnBook(this.ISBNTxt.Text, this.memberIDtxt.Text);
-                    librarian.recordTransaction(transactionType.returned, librarian, this.ISBNTxt.Text, this.memberIDtxt.Text);
                     clearTexts();
                 }
             }
             else
             {
                 MessageBox.Show("Please enter valid details!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                clearTexts();
             }
 
         }
@@ -107,5 +113,16 @@ namespace LMS.Forms
                 this.nameDetailTxt.Clear();
             }
         }
+
+        private void ReturnBook_Load(object sender, EventArgs e)
+        {
+            if (activeUser is Member)
+            {
+                Member member = activeUser as Member;
+                this.idDetailTxt.Text = member.Id;
+                this.nameDetailTxt.Text = $"{member.FirstName} {member.LastName}";
+            }
+        }
     }
 }
+

@@ -100,30 +100,41 @@ public class Book
         }
     }
 
-    public void borrowBook(Member member)
+    public bool borrowBook(Member member)
     {
+        Member borrowingMember = member;
         if (availability)
         {
             this.Copies--;
             borrowedMemberByID.Add(member.Id);
+            borrowingMember.BorrowedBooksISBN.Add(this.ISBN);
+            LibraryDatabase.updateRecord<Book>("Books", this.id, this);
+            LibraryDatabase.updateRecord<User>("Users", borrowingMember.Id, borrowingMember);
+            return true;
         }
         else
         {
             MessageBox.Show($"Requested book is not available!", "Unavailable", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+            return false;
         }
     }
 
-    public void returnBook(Member member)
+    public bool returnBook(Member member)
     {
+        Member returningMember = member;
         if (this.borrowedMemberByID.Contains(member.Id))
         {
             this.Copies++;
             borrowedMemberByID.Remove(member.Id);
+            returningMember.BorrowedBooksISBN.Remove(this.ISBN);
+            LibraryDatabase.updateRecord<Book>("Books", this.id, this);
+            LibraryDatabase.updateRecord<User>("Users", returningMember.Id, returningMember);
+            return true;
         }
         else
         {
-            MessageBox.Show($"Book is not borrowed!", "Not borrowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show($"Book is not borrowed by Member!", "Not borrowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return false;
         }
     }
 }

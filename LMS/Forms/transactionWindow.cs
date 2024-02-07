@@ -25,28 +25,29 @@ namespace LMS.Forms
         {
             if (transaction != null)
             {
-                if (transaction.Issued == issuedBy.librarianIssued)
-                {
-                    this.performedByText.Text = $"Librarian: {transaction.Librarian} | ID: {transaction.LibrarianID}";
-                }
-                else
-                {
-                    this.performedByText.Text = $"Member: {transaction.Member} | ID: {transaction.MemberID}";
-                }
 
-                if (transaction.TransactionType == transactionType.borrowed)
+                if ((int)transaction.TransactionType == 0)
                 {
                     this.transactionNameTxt.Text = "Borrow Book";
                 }
-                else
+                else if ((int)transaction.TransactionType == 1)
                 {
                     this.transactionNameTxt.Text = "Return Book";
                 }
 
+                if ((int)transaction.PerformedBy == 0)
+                {
+                    this.performedByText.Text = $"Librarian: {transaction.LibrarianName} | ID: {transaction.LibrarianID}";
+                }
+                else if ((int)transaction.PerformedBy == 1)
+                {
+                    this.performedByText.Text = $"Librarian: {transaction.MemberName} | ID: {transaction.MemberID}";
+                }
+
                 this.transactionIDText.Text = transaction.Id.ToString();
-                this.memberNameTxt.Text = transaction.Member.ToString();
-                this.memberIdTxt.Text = transaction.MemberID.ToString();
-                this.bookTitleTxt.Text = transaction.Book;
+                this.memberNameTxt.Text = transaction.MemberName;
+                this.memberIdTxt.Text = transaction.MemberID;
+                this.bookTitleTxt.Text = transaction.BookTitle;
                 this.bookISBNTxt.Text = transaction.BookISBN;
                 this.transactionDate.Value = transaction.TransactionDate;
 

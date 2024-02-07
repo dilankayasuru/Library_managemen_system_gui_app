@@ -82,7 +82,7 @@ namespace LMS.Forms
 
         private void registerBtn_Click(object sender, EventArgs e)
         {
-            if (this.memberIDtxt.Text == "" || this.userNameTxt.Text == "" || this.passwordTxt.Text == "" || this.fnameTxt.Text == "" || this.lnameTxt.Text == "")
+            if (!isValidatedInputs())
             {
                 MessageBox.Show("Please enter valid informatino!", "Invalid Input!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 clearText();
@@ -108,6 +108,15 @@ namespace LMS.Forms
                     clearText();
                 }
             }
+        }
+
+        private bool isValidatedInputs()
+        {
+            return this.memberIDtxt.Text.Trim() != "" 
+                && this.userNameTxt.Text.Trim() != "" 
+                && this.passwordTxt.Text.Trim() != "" 
+                && this.fnameTxt.Text.Trim() != "" 
+                && this.lnameTxt.Text.Trim() != "";
         }
     }
 }

@@ -13,43 +13,45 @@ public class Transaction
 {
     string id;
 
-    string member;
+    string memberName;
     string memberID;
 
-    string librarian;
+    string librarianName;
     string librarianID;
 
-    string book;
+    string bookTitle;
     string bookISBN;
 
     DateTime transactionDate;
 
-    transactionType transactionType;
+    Transaction_Type transactionType;
 
-    issuedBy issued;
+    Performed_By performedBy;
 
-    public Transaction(Member member, Librarian librarian, Book book, transactionType transaction)
+    public Transaction(Book book, Member member, Transaction_Type transactionType)
     {
-        this.member = member.FirstName;
+        this.memberName = $"{member.FirstName} {member.LastName}";
         this.memberID = member.Id;
-        this.librarian = librarian.FirstName;
-        this.librarianID = librarian.Id;
-        this.book = book.Title;
+        this.bookTitle = book.Title;
         this.bookISBN = book.ISBN;
         this.transactionDate = DateTime.UtcNow;
-        this.transactionType = transaction;
-        this.issued = issuedBy.librarianIssued;
-    }    
-    public Transaction(Member member, Book book, transactionType transaction)
-    {
-        this.member = member.FirstName;
-        this.memberID = member.Id;
-        this.book = book.Title;
-        this.bookISBN = book.ISBN;
-        this.transactionDate = DateTime.UtcNow;
-        this.transactionType = transaction;
-        this.issued = issuedBy.selfIssued;
+        this.transactionType = transactionType;
+        this.performedBy = Performed_By.Member;
     }
+
+    public Transaction(Book book, Member member, Transaction_Type transactionType, Librarian librarian)
+    {
+        this.memberName = $"{member.FirstName} {member.LastName}";
+        this.memberID = member.Id;
+        this.librarianName = $"{librarian.FirstName} {librarian.LastName}";
+        this.librarianID = librarian.Id;
+        this.bookTitle = book.Title;
+        this.bookISBN = book.ISBN;
+        this.transactionDate = DateTime.UtcNow;
+        this.transactionType = transactionType;
+        this.performedBy = Performed_By.Librarian;
+    } 
+
 
     [BsonId]
     [BsonRepresentation(BsonType.ObjectId)]
@@ -59,31 +61,31 @@ public class Transaction
         set { this.id = value; }
     }
 
-    public string Member
+    public string MemberName
     {
-        get { return member; }
-        set { member = value; }
-    }    
+        get { return memberName; }
+        set { memberName = value; }
+    }
     public string MemberID
     {
         get { return memberID; }
         set { memberID = value; }
-    }    
-    public string Librarian
+    }
+    public string LibrarianName
     {
-        get { return librarian; }
-        set { librarian = value; }
-    }    
+        get { return librarianName; }
+        set { librarianName = value; }
+    }
     public string LibrarianID
     {
         get { return librarianID; }
         set { librarianID = value; }
-    }    
-    public string Book
+    }
+    public string BookTitle
     {
-        get { return book; }
-        set { book = value; }
-    }    
+        get { return bookTitle; }
+        set { bookTitle = value; }
+    }
     public string BookISBN
     {
         get { return bookISBN; }
@@ -96,26 +98,26 @@ public class Transaction
         set { transactionDate = value; }
     }
 
-    public transactionType TransactionType
+    public Transaction_Type TransactionType
     {
         get { return transactionType; }
         set { value = transactionType; }
-    }    
-    public issuedBy Issued
+    }
+    public Performed_By PerformedBy
     {
-        get { return issued; }
-        set { value = issued; }
+        get { return performedBy; }
+        set { value = performedBy; }
     }
 }
 
-public enum transactionType
+public enum Transaction_Type
 {
-    borrowed, 
-    returned
+    Borrow_Book = 0,
+    Return_Book = 1,
 }
 
-public enum issuedBy
+public enum Performed_By
 {
-    selfIssued, 
-    librarianIssued 
+    Librarian = 0,
+    Member = 1,
 }
