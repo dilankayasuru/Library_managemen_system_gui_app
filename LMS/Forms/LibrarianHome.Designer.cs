@@ -90,9 +90,9 @@
             this.totalBooksLbl.AutoSize = true;
             this.totalBooksLbl.Location = new System.Drawing.Point(8, 75);
             this.totalBooksLbl.Name = "totalBooksLbl";
-            this.totalBooksLbl.Size = new System.Drawing.Size(86, 20);
+            this.totalBooksLbl.Size = new System.Drawing.Size(129, 20);
             this.totalBooksLbl.TabIndex = 0;
-            this.totalBooksLbl.Text = "Total Books";
+            this.totalBooksLbl.Text = "Total Book Copies";
             // 
             // availableBookPanel
             // 
@@ -121,9 +121,9 @@
             this.availbleBooks.AutoSize = true;
             this.availbleBooks.Location = new System.Drawing.Point(8, 75);
             this.availbleBooks.Name = "availbleBooks";
-            this.availbleBooks.Size = new System.Drawing.Size(115, 20);
+            this.availbleBooks.Size = new System.Drawing.Size(158, 20);
             this.availbleBooks.TabIndex = 0;
-            this.availbleBooks.Text = "Available Books";
+            this.availbleBooks.Text = "Available Book Copies";
             // 
             // issuedBooksPanel
             // 
@@ -152,9 +152,9 @@
             this.issuedBooks.AutoSize = true;
             this.issuedBooks.Location = new System.Drawing.Point(8, 75);
             this.issuedBooks.Name = "issuedBooks";
-            this.issuedBooks.Size = new System.Drawing.Size(94, 20);
+            this.issuedBooks.Size = new System.Drawing.Size(137, 20);
             this.issuedBooks.TabIndex = 0;
-            this.issuedBooks.Text = "Issued Books";
+            this.issuedBooks.Text = "Issued Book Copies";
             // 
             // totalMembersPanel
             // 

@@ -101,12 +101,12 @@ public class Transaction
     public Transaction_Type TransactionType
     {
         get { return transactionType; }
-        set { value = transactionType; }
+        set { transactionType = value; }
     }
     public Performed_By PerformedBy
     {
         get { return performedBy; }
-        set { value = performedBy; }
+        set { performedBy = value; }
     }
 }
 

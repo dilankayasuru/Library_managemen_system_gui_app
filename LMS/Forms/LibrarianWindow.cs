@@ -20,7 +20,7 @@ namespace LMS.Forms
             this.library = library;
             InitializeComponent();
             initializeWindow();
-            switchTabs(new LibrarianHome(library));
+            switchTabs(new LibrarianHome(library, activeUser));
 
 
             this.FormClosing += LibrarianWindow_FormClosing;
@@ -54,7 +54,7 @@ namespace LMS.Forms
 
         private void homeBtn_Click(object sender, EventArgs e)
         {
-            switchTabs(new LibrarianHome(library));
+            switchTabs(new LibrarianHome(library,activeUser));
         }
 
         private void browseBooksBtn_Click(object sender, EventArgs e)

@@ -15,6 +15,8 @@ public class Librarian : User
         this.IsAdmin = true;
     }
 
+
+
     public List<Member> getAllMembers()
     {
         List<Member> members = new List<Member>();
@@ -125,5 +127,10 @@ public class Librarian : User
         {
             MessageBox.Show("Book or Member not found in the Database!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+    }
+
+    public List<Transaction> readAllTTransactions()
+    {
+        return LibraryDatabase.getRecords<Transaction>("Transaction");
     }
 }

@@ -48,7 +48,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.profileLbl = new System.Windows.Forms.Label();
             this.quotePanel = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
+            this.quoteTxt = new System.Windows.Forms.Label();
             this.quoteLbl = new System.Windows.Forms.Label();
             this.borrowedBooksPanel.SuspendLayout();
             this.availableBooksPanel.SuspendLayout();
@@ -70,19 +70,20 @@
             // borrowedBooksPanel
             // 
             this.borrowedBooksPanel.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.borrowedBooksPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(191)))), ((int)(((byte)(179)))));
+            this.borrowedBooksPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
             this.borrowedBooksPanel.Controls.Add(this.borrowedBooksCount);
             this.borrowedBooksPanel.Controls.Add(this.borrowedBookLbl);
             this.borrowedBooksPanel.Location = new System.Drawing.Point(803, 91);
             this.borrowedBooksPanel.Name = "borrowedBooksPanel";
             this.borrowedBooksPanel.Padding = new System.Windows.Forms.Padding(5);
-            this.borrowedBooksPanel.Size = new System.Drawing.Size(200, 100);
+            this.borrowedBooksPanel.Size = new System.Drawing.Size(200, 124);
             this.borrowedBooksPanel.TabIndex = 6;
             // 
             // borrowedBooksCount
             // 
             this.borrowedBooksCount.AutoSize = true;
             this.borrowedBooksCount.Font = new System.Drawing.Font("Segoe UI", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.borrowedBooksCount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(246)))));
             this.borrowedBooksCount.Location = new System.Drawing.Point(62, 18);
             this.borrowedBooksCount.Name = "borrowedBooksCount";
             this.borrowedBooksCount.Size = new System.Drawing.Size(77, 47);
@@ -91,23 +92,25 @@
             // 
             // borrowedBookLbl
             // 
-            this.borrowedBookLbl.AutoSize = true;
-            this.borrowedBookLbl.Location = new System.Drawing.Point(8, 75);
+            this.borrowedBookLbl.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.borrowedBookLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(246)))));
+            this.borrowedBookLbl.Location = new System.Drawing.Point(5, 76);
             this.borrowedBookLbl.Name = "borrowedBookLbl";
-            this.borrowedBookLbl.Size = new System.Drawing.Size(124, 21);
+            this.borrowedBookLbl.Size = new System.Drawing.Size(190, 43);
             this.borrowedBookLbl.TabIndex = 0;
             this.borrowedBookLbl.Text = "Borrowed Books";
+            this.borrowedBookLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // availableBooksPanel
             // 
             this.availableBooksPanel.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.availableBooksPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(230)))), ((int)(((byte)(214)))));
+            this.availableBooksPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(234)))), ((int)(((byte)(242)))));
             this.availableBooksPanel.Controls.Add(this.availableBooksCount);
             this.availableBooksPanel.Controls.Add(this.availableBooksLbl);
             this.availableBooksPanel.Location = new System.Drawing.Point(549, 91);
             this.availableBooksPanel.Name = "availableBooksPanel";
             this.availableBooksPanel.Padding = new System.Windows.Forms.Padding(5);
-            this.availableBooksPanel.Size = new System.Drawing.Size(200, 100);
+            this.availableBooksPanel.Size = new System.Drawing.Size(200, 124);
             this.availableBooksPanel.TabIndex = 5;
             // 
             // availableBooksCount
@@ -122,12 +125,12 @@
             // 
             // availableBooksLbl
             // 
-            this.availableBooksLbl.AutoSize = true;
-            this.availableBooksLbl.Location = new System.Drawing.Point(6, 75);
+            this.availableBooksLbl.Location = new System.Drawing.Point(7, 75);
             this.availableBooksLbl.Name = "availableBooksLbl";
-            this.availableBooksLbl.Size = new System.Drawing.Size(189, 21);
+            this.availableBooksLbl.Size = new System.Drawing.Size(186, 44);
             this.availableBooksLbl.TabIndex = 0;
-            this.availableBooksLbl.Text = "Available Books in Library";
+            this.availableBooksLbl.Text = "Available Book copies in Library to Borrow\r\n";
+            this.availableBooksLbl.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
             // profileDetailsPanel
             // 
@@ -241,7 +244,7 @@
             this.quotePanel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.quotePanel.BackgroundImage = global::LMS.Properties.Resources.issueBookImg;
             this.quotePanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.quotePanel.Controls.Add(this.label2);
+            this.quotePanel.Controls.Add(this.quoteTxt);
             this.quotePanel.Controls.Add(this.quoteLbl);
             this.quotePanel.Location = new System.Drawing.Point(549, 246);
             this.quotePanel.Margin = new System.Windows.Forms.Padding(0);
@@ -249,21 +252,21 @@
             this.quotePanel.Size = new System.Drawing.Size(454, 392);
             this.quotePanel.TabIndex = 7;
             // 
-            // label2
+            // quoteTxt
             // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Font = new System.Drawing.Font("Monotype Corsiva", 15.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(0, 57);
-            this.label2.MaximumSize = new System.Drawing.Size(454, 0);
-            this.label2.MinimumSize = new System.Drawing.Size(454, 0);
-            this.label2.Name = "label2";
-            this.label2.Padding = new System.Windows.Forms.Padding(15);
-            this.label2.Size = new System.Drawing.Size(454, 155);
-            this.label2.TabIndex = 5;
-            this.label2.Text = resources.GetString("label2.Text");
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.quoteTxt.AutoSize = true;
+            this.quoteTxt.BackColor = System.Drawing.Color.Transparent;
+            this.quoteTxt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.quoteTxt.Font = new System.Drawing.Font("Monotype Corsiva", 15.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.quoteTxt.Location = new System.Drawing.Point(0, 57);
+            this.quoteTxt.MaximumSize = new System.Drawing.Size(454, 0);
+            this.quoteTxt.MinimumSize = new System.Drawing.Size(454, 0);
+            this.quoteTxt.Name = "quoteTxt";
+            this.quoteTxt.Padding = new System.Windows.Forms.Padding(15);
+            this.quoteTxt.Size = new System.Drawing.Size(454, 155);
+            this.quoteTxt.TabIndex = 5;
+            this.quoteTxt.Text = resources.GetString("quoteTxt.Text");
+            this.quoteTxt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // quoteLbl
             // 
@@ -328,7 +331,7 @@
         private System.Windows.Forms.TextBox lastNameTxt;
         private System.Windows.Forms.TextBox memberIDtxt;
         private System.Windows.Forms.Label quoteLbl;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label quoteTxt;
         public System.Windows.Forms.Label availableBooksCount;
     }
 }

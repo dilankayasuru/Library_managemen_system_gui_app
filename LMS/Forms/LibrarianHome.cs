@@ -15,11 +15,13 @@ namespace LMS.Forms
     {
         Library library;
         List<Book> books = new List<Book>();
+        Librarian librarian;
         List<Transaction> transactions;
-        public LibrarianHome(Library library)
+        public LibrarianHome(Library library, Librarian librarian)
         {
             InitializeComponent();
             this.library = library;
+            this.librarian = librarian;
         }
 
         private void LibrarianHome_Load(object sender, EventArgs e)
@@ -31,9 +33,25 @@ namespace LMS.Forms
         {
             books = library.getAllBooks();
 
-            totalBookCount.Text = books.Count.ToString();
-            availableCount.Text = books.FindAll(b => b.Availability).Count.ToString();
+            int totalCopies = 0;
+            int availableCopies = 0;
+
+            foreach (Book book in books)
+            {
+                totalCopies += book.Copies;
+
+                if (book.Availability)
+                {
+                    availableCopies += book.Copies;
+                }
+            }
+
+            totalBookCount.Text = totalCopies.ToString();
+
+            availableCount.Text = availableCopies.ToString();
+
             issuedBookCount.Text = books.FindAll(b => (b.BorrowedMemberByID.Count > 0)).Count.ToString();
+
             totalMemberCount.Text = library.getAllBooks().Count.ToString();
 
             MemberHome.centerLable(this.totalBookPanel, this.totalBookCount, 10);
@@ -46,8 +64,7 @@ namespace LMS.Forms
 
         private void refreshSummary()
         {
-            transactions = LibraryDatabase.getRecords<Transaction>("Transaction");
-
+            transactions = librarian.readAllTTransactions();
             this.transactionPanel.Controls.Clear();
 
             foreach (Transaction transaction in transactions)

@@ -149,7 +149,6 @@
             this.searchTxt.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.searchTxt.StateNormal.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.searchTxt.TabIndex = 3;
-            this.searchTxt.TextChanged += new System.EventHandler(this.searchTxt_TextChanged);
             // 
             // loginBtn
             // 

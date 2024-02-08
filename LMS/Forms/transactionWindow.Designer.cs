@@ -30,6 +30,7 @@
         {
             this.transactionIdHeaderLbl = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.count = new System.Windows.Forms.Label();
             this.performedByText = new System.Windows.Forms.Label();
             this.performedByLbl = new System.Windows.Forms.Label();
             this.transactionIDText = new System.Windows.Forms.Label();
@@ -45,7 +46,6 @@
             this.bookTitleTxt = new System.Windows.Forms.Label();
             this.bookTitleLbl = new System.Windows.Forms.Label();
             this.transactionDate = new System.Windows.Forms.DateTimePicker();
-            this.count = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -72,6 +72,15 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1006, 37);
             this.panel1.TabIndex = 1;
+            // 
+            // count
+            // 
+            this.count.AutoSize = true;
+            this.count.Location = new System.Drawing.Point(5, 8);
+            this.count.Name = "count";
+            this.count.Size = new System.Drawing.Size(17, 20);
+            this.count.TabIndex = 4;
+            this.count.Text = "0";
             // 
             // performedByText
             // 
@@ -232,15 +241,6 @@
             this.transactionDate.Name = "transactionDate";
             this.transactionDate.Size = new System.Drawing.Size(131, 27);
             this.transactionDate.TabIndex = 16;
-            // 
-            // count
-            // 
-            this.count.AutoSize = true;
-            this.count.Location = new System.Drawing.Point(5, 8);
-            this.count.Name = "count";
-            this.count.Size = new System.Drawing.Size(17, 20);
-            this.count.TabIndex = 4;
-            this.count.Text = "0";
             // 
             // transactionCard
             // 
