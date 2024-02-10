@@ -11,6 +11,7 @@ using System.Windows.Forms.DataVisualization.Charting;
 using LMS.Forms;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using static MongoDB.Bson.Serialization.Serializers.SerializerHelper;
 
 namespace LMS
 {
@@ -151,30 +152,8 @@ namespace LMS
                 Console.Write("Enter title: ");
                 string search = Console.ReadLine();
 
-                // Get all books from library
-                List<Book> books = library.getAllBooks();
-
-                // Get the book by searching title
-                Book book = books.Find(b => b.Title == search);
-
-                // Display book information if book is not null (if exists)
-                if (book != null)
-                {
-                    Console.WriteLine();
-
-                    // Display customized book details output 
-                    displayBookDetails(book);
-                    Console.WriteLine();
-
-                    continueMessage();
-                }
-                else
-                {
-                    // Display message if book not found
-                    Console.WriteLine("Book not found :(");
-                    Console.WriteLine();
-                    continueMessage();
-                }
+                // Calling search book method to get books by title
+                searchBooksBy(library, BooksBy.Title, search);
             }
 
             // Login interface for console application
@@ -189,11 +168,11 @@ namespace LMS
                 Console.WriteLine();
 
                 // Read username input
-                Console.WriteLine("\tUser name: ");
+                Console.Write("\tUser name: ");
                 username = Console.ReadLine();
 
                 // Read password input
-                Console.WriteLine("\tPassword: ");
+                Console.Write("\tPassword: ");
                 password = Console.ReadLine();
 
                 // Find user in the database
@@ -206,7 +185,7 @@ namespace LMS
                     {
                         Librarian activeUser = user as Librarian;
                         // Calling librarian's interface
-                        librarianConsoleInterface();
+                        librarianConsoleInterface(activeUser);
                     }
                     // Set Member
                     else
@@ -247,7 +226,8 @@ namespace LMS
                         Console.WriteLine("\t1. Browse Books");
                         Console.WriteLine("\t2. Return Books");
                         Console.WriteLine("\t3. Borrow Books");
-                        Console.WriteLine("\t4. Logout");
+                        Console.WriteLine("\t4. View Borrowed Books");
+                        Console.WriteLine("\t5. Logout");
                         Console.WriteLine();
 
                         // Get user choice
@@ -261,17 +241,27 @@ namespace LMS
                                 break;
 
                             case 2:
-                                Console.WriteLine();
+                                issueBook(activeMember);
                                 break;
 
                             case 3:
-                                Console.WriteLine();
+                                returnBook(activeMember);
                                 break;
 
                             case 4:
+                                showBorrowedBooks(activeMember);
+                                break;
+
+                            case 5:
                                 // Display exiting message
                                 exitingMessage($"Bye! {activeMember.FirstName}\nExiting to main menu");
                                 isRunning = false;
+                                break;
+
+                            default:
+                                // Display error message
+                                Console.WriteLine();
+                                invalidInputMessage();
                                 break;
                         }
                     }
@@ -284,10 +274,83 @@ namespace LMS
                 while (isRunning);
             }
 
-            // Console for member's operations
-            void librarianConsoleInterface()
+            // Console for librarian's operations
+            void librarianConsoleInterface(Librarian librarian)
             {
+                Librarian activeLibrarian = librarian;
 
+                // Keep Librarian's interface until user exit
+                bool isRunning = true;
+                do
+                {
+                    try
+                    {
+                        Console.Clear();
+                        // Display customized welcome message
+                        welcomeMessage(activeLibrarian.FirstName);
+                        Console.WriteLine();
+
+                        // Display Librarian's menu
+                        Console.WriteLine("\t1. View Transaction History");
+                        Console.WriteLine("\t2. Browse Books");
+                        Console.WriteLine("\t3. Manage Books");
+                        Console.WriteLine("\t4. Manage Members");
+                        Console.WriteLine("\t5. Return Books");
+                        Console.WriteLine("\t6. Borrow Books");
+                        Console.WriteLine("\t7. Logout");
+                        Console.WriteLine();
+
+                        // Get user choice
+                        Console.Write("Select an option: ");
+                        option = int.Parse(Console.ReadLine());
+
+                        switch (option)
+                        {
+                            case 1:
+                                viewTransactions();
+                                break;
+
+                            case 2:
+                                searchBooks();
+                                break;
+
+                            case 3:
+                                manageBooks();
+                                break;
+
+                            case 4:
+                                ManageMembers();
+                                break;
+
+                            case 5:
+                                // Calling return book method 
+                                returnBookByLibrarian(activeLibrarian);
+                                break;
+
+                            case 6:
+                                // Calling issue book method
+                                issueBookByLibrarian(activeLibrarian);
+                                break;
+
+                            case 7:
+                                // Display exiting message
+                                exitingMessage($"Bye! {librarian.FirstName}\nExiting to main menu");
+                                isRunning = false;
+                                break;
+
+                            default:
+                                // Display error message
+                                invalidInputMessage();
+                                break;
+                        }
+                    }
+                    catch
+                    {
+                        invalidInputMessage();
+                        continue;
+                    }
+                }
+                while (isRunning);
             }
 
             // View transaction interface
@@ -307,7 +370,7 @@ namespace LMS
                         string keyword;
 
                         // Initialize available book list
-                        List<Book> availableBokos;
+                        List<Book> availableBooks = new List<Book>();
 
                         Console.Clear();
                         Console.WriteLine("Browse Library Catalog");
@@ -330,24 +393,25 @@ namespace LMS
                                 // Get search keyword
                                 Console.Write("Enter Keyword to search: ");
                                 keyword = Console.ReadLine();
+                                Console.WriteLine();
                                 searchBooksBy(library, BooksBy.ISBN, keyword);
-                                continueMessage();
                                 break;
 
                             case 2:
                                 // Get search keyword
                                 Console.Write("Enter Keyword to search: ");
                                 keyword = Console.ReadLine();
+                                Console.WriteLine();
                                 searchBooksBy(library, BooksBy.Title, keyword);
-                                continueMessage();
                                 break;
 
                             case 3:
-                                availableBokos = library.getAllBooks();
-                                foreach (Book book in availableBokos)
+                                availableBooks = library.getAllBooks();
+                                foreach (Book book in availableBooks)
                                 {
                                     displayBookDetails(book);
                                 }
+                                continueMessage();
                                 break;
 
                             case 4:
@@ -364,7 +428,7 @@ namespace LMS
                     {
                         invalidInputMessage();
                     }
-                    
+
                 } while (option != 4);
             }
 
@@ -381,21 +445,102 @@ namespace LMS
             }
 
             // Borrow Book interface
-            void issueBook()
+            void issueBook(Member member)
             {
+                Console.WriteLine();
+                Console.WriteLine("Borrow Books");
+                Console.WriteLine();
+                Console.Write("\tEnter Book ISBN: ");
+                string bookISBN = Console.ReadLine();
+                if (bookISBN.Replace(" ", "").Trim() != "")
+                {
+                    member.borrowBook(bookISBN);
+                }
+                else
+                {
+                    Console.WriteLine();
+                    invalidInputMessage();
+                    continueMessage();
+                }
+            }
 
+            void issueBookByLibrarian(Librarian librarian)
+            {
+                Console.WriteLine();
+                Console.WriteLine("Borrow Books");
+                Console.WriteLine();
+                Console.Write("\tEnter Book ISBN: ");
+                string bookISBN = Console.ReadLine();
+                Console.Write("\tEnter Member ID: ");
+                string memberID = Console.ReadLine();
+
+                if (bookISBN.Replace(" ", "").Trim() != "")
+                {
+                    librarian.borrowBook(bookISBN, memberID);
+                }
+                else
+                {
+                    Console.WriteLine();
+                    invalidInputMessage();
+                    continueMessage();
+                }
             }
 
             // Return book interface
-            void returnBook()
+            void returnBook(Member member)
             {
+                Console.WriteLine();
+                Console.WriteLine("Return Books");
+                Console.WriteLine();
+                Console.Write("\tEnter Book ISBN: ");
+                string bookISBN = Console.ReadLine();
+                if (bookISBN.Replace(" ", "").Trim() != "")
+                {
+                    member.returnBook(bookISBN);
+                }
+                else
+                {
+                    Console.WriteLine();
+                    invalidInputMessage();
+                    continueMessage();
+                }
+            }
 
+            void returnBookByLibrarian(Librarian librarian)
+            {
+                Console.WriteLine();
+                Console.WriteLine("Return Books");
+                Console.WriteLine();
+                Console.Write("\tEnter Book ISBN: ");
+                string bookISBN = Console.ReadLine();
+                Console.Write("\tEnter Member ID: ");
+                string memberID = Console.ReadLine();
+
+                if (bookISBN.Replace(" ", "").Trim() != "")
+                {
+                    librarian.returnBook(bookISBN, memberID);
+                }
+                else
+                {
+                    Console.WriteLine();
+                    invalidInputMessage();
+                    continueMessage();
+                }
             }
 
             // Member's borrowed books display
-            void showBorrowedBooks()
+            void showBorrowedBooks(Member member)
             {
+                List<Book> books = member.showBorrowedBooks();
+                Console.WriteLine();
+                Console.WriteLine("Borrowed Books");
 
+                foreach (Book book in books)
+                {
+                    displayBookDetails(book);
+                }
+
+                continueMessage();
             }
         }
 
@@ -411,9 +556,10 @@ namespace LMS
 
             switch (searchByEnum)
             {
-                case 1:
+                case 0:
                     // Get book result filtering by title
-                    result = books.Find(b => b.Title.Trim() == keyword.Trim());
+
+                    result = books.Find(b => b.Title.Replace(" ", "").ToLower() == keyword.Replace(" ", "").ToLower());
 
                     // Output result if book is found
                     if (result != null)
@@ -429,9 +575,9 @@ namespace LMS
                     }
                     break;
 
-                case 2:
+                case 1:
                     // Get book result filtering by ISBN
-                    result = library.getAllBooks().Find(b => b.ISBN.Trim() == keyword.Trim());
+                    result = books.Find(b => b.ISBN.Replace(" ", "").ToLower() == keyword.Replace(" ", "").ToLower());
 
                     // Output result if book is found
                     if (result != null)
@@ -467,12 +613,12 @@ namespace LMS
         static void invalidInputMessage()
         {
             Console.WriteLine("Invalid Input! Please enter the option number");
-            Thread.Sleep(1000);
+            continueMessage();
             Console.Clear();
         }
 
         // Customized Book details output
-        static void displayBookDetails(Book book)
+         static void displayBookDetails(Book book)
         {
             Console.WriteLine($"Id: {book.Id}");
             Console.WriteLine($"Title: {book.Title}");
