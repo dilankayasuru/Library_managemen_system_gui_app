@@ -110,6 +110,7 @@ public class Transaction
     }
 }
 
+// Enumerations
 public enum Transaction_Type
 {
     Borrow_Book = 0,

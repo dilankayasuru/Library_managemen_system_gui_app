@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Net.NetworkInformation;
 using System.Runtime.InteropServices;
 using System.Threading;
@@ -11,6 +12,7 @@ using System.Windows.Forms.DataVisualization.Charting;
 using LMS.Forms;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using MongoDB.Driver.Core.Bindings;
 using static MongoDB.Bson.Serialization.Serializers.SerializerHelper;
 
 namespace LMS
@@ -25,6 +27,7 @@ namespace LMS
         [STAThread]
         static void Main()
         {
+            // Initialize library
             Library library = new Library();
             int option = 0;
             bool isClosing = false;
@@ -32,9 +35,12 @@ namespace LMS
             {
                 try
                 {
+                    // Clear console
                     Console.Clear();
+                    // Display welcome message
                     Console.WriteLine("Library Management System");
                     Console.WriteLine();
+                    // Display main menu
                     Console.WriteLine("\t1. Run GUI Application");
                     Console.WriteLine("\t2. Run Console Application");
                     Console.WriteLine("\t3. Exit");
@@ -151,7 +157,7 @@ namespace LMS
                 Console.WriteLine();
                 Console.Write("Enter title: ");
                 string search = Console.ReadLine();
-
+                Console.WriteLine();
                 // Calling search book method to get books by title
                 searchBooksBy(library, BooksBy.Title, search);
             }
@@ -237,18 +243,22 @@ namespace LMS
                         switch (option)
                         {
                             case 1:
+                                // Calling search books method
                                 searchBooks();
                                 break;
 
                             case 2:
-                                issueBook(activeMember);
-                                break;
-
-                            case 3:
+                                // Calling return book method
                                 returnBook(activeMember);
                                 break;
 
+                            case 3:
+                                // Calling issue book method
+                                issueBook(activeMember);
+                                break;
+
                             case 4:
+                                // Display borrowed books
                                 showBorrowedBooks(activeMember);
                                 break;
 
@@ -267,6 +277,7 @@ namespace LMS
                     }
                     catch
                     {
+                        // Display error message
                         invalidInputMessage();
                         continue;
                     }
@@ -277,6 +288,7 @@ namespace LMS
             // Console for librarian's operations
             void librarianConsoleInterface(Librarian librarian)
             {
+                // declaration of active librarian
                 Librarian activeLibrarian = librarian;
 
                 // Keep Librarian's interface until user exit
@@ -304,22 +316,27 @@ namespace LMS
                         Console.Write("Select an option: ");
                         option = int.Parse(Console.ReadLine());
 
+                        // Switch case for user choice
                         switch (option)
                         {
                             case 1:
+                                // Calling view transaction method
                                 viewTransactions();
                                 break;
 
                             case 2:
+                                // Calling search books method
                                 searchBooks();
                                 break;
 
                             case 3:
-                                manageBooks();
+                                // Calling manage books method
+                                manageBooks(librarian);
                                 break;
 
                             case 4:
-                                ManageMembers();
+                                // Calling manage members method
+                                ManageMembers(librarian);
                                 break;
 
                             case 5:
@@ -340,12 +357,15 @@ namespace LMS
 
                             default:
                                 // Display error message
+                                Console.WriteLine();
                                 invalidInputMessage();
                                 break;
                         }
                     }
                     catch
                     {
+                        // Display error message
+                        Console.WriteLine();
                         invalidInputMessage();
                         continue;
                     }
@@ -356,7 +376,47 @@ namespace LMS
             // View transaction interface
             void viewTransactions()
             {
+                // Get all the transactions from the database
+                List<Transaction> transactions = LibraryDatabase.getRecords<Transaction>("Transaction");
 
+                Console.Clear();
+                Console.WriteLine("Transaction History...");
+                Console.WriteLine();
+                Console.WriteLine();
+
+                // Display all the transactions
+                int count = 0;
+                foreach (Transaction transaction in transactions)
+                {
+                    // Increment count
+                    count++;
+
+                    // Display transaction details
+                    Console.Write($"{count})");
+                    Console.WriteLine($"\tID: {transaction.Id}");
+                    Console.WriteLine($"\tTransaction type: {transaction.TransactionType.ToString()}");
+                    Console.WriteLine($"\tPerformed By: {transaction.PerformedBy.ToString()}");
+                    Console.WriteLine($"\tDate: {transaction.TransactionDate}");
+                    Console.WriteLine($"\tBook Title: {transaction.BookTitle}");
+                    Console.WriteLine($"\tBook ISBN: {transaction.BookISBN}");
+
+                    // Display performed by details
+                    if (transaction.PerformedBy == Performed_By.Librarian)
+                    {
+                        Console.WriteLine($"\tPerformed Librarian Name: {transaction.LibrarianName}");
+                        Console.WriteLine($"\tPerformed Librarian ID: {transaction.LibrarianID}");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"\tPerformed Member Name: {transaction.MemberName}");
+                        Console.WriteLine($"\tPerformed Member ID: {transaction.MemberID}");
+                    }
+
+                    Console.WriteLine();
+                    Console.WriteLine();
+                }
+
+                continueMessage();
             }
 
             // Search books interface
@@ -387,6 +447,7 @@ namespace LMS
 
                         Console.WriteLine();
 
+                        // Switch case for user choice
                         switch (option)
                         {
                             case 1:
@@ -406,6 +467,7 @@ namespace LMS
                                 break;
 
                             case 3:
+                                // Get all available books
                                 availableBooks = library.getAllBooks();
                                 foreach (Book book in availableBooks)
                                 {
@@ -420,12 +482,14 @@ namespace LMS
                                 break;
 
                             default:
+                                // Display error message
                                 invalidInputMessage();
                                 break;
                         }
                     }
                     catch
                     {
+                        // Display error message
                         invalidInputMessage();
                     }
 
@@ -433,15 +497,303 @@ namespace LMS
             }
 
             // Admin's manage books interface
-            void manageBooks()
+            void manageBooks(Librarian librarian)
             {
+                // Initialize manage book option
+                int manageBookOpt = 0;
+                do
+                {
+                    Console.Clear();
+                    // Display manage book menu
+                    Console.WriteLine("Manage Books...");
+                    Console.WriteLine();
+                    Console.WriteLine("1. Add Book");
+                    Console.WriteLine("2. Remove Book");
+                    Console.WriteLine("3. Edit Book Details");
+                    Console.WriteLine("4. Back");
+                    Console.WriteLine();
+                    Console.Write("Select an option: ");
+                    manageBookOpt = int.Parse(Console.ReadLine());
+                    // Switch case for user choice
+                    switch (manageBookOpt)
+                    {
+                        case 1:
+                            // Calling add book method
+                            addBook(librarian);
+                            break;
 
+                        case 2:
+                            // Calling remove book method
+                            removeBook(librarian);
+                            break;
+
+                        case 3:
+                            // Calling edit book method
+                            editBookDetails(librarian);
+                            break;
+
+                        case 4:
+                            Console.WriteLine();
+                            // Display exiting message
+                            exitingMessage("Returning to main menu");
+                            break;
+
+                        default:
+                            // Display error message
+                            invalidInputMessage();
+                            break;
+                    }
+
+                } while (manageBookOpt != 4);
+            }
+
+            // Add book interface
+            void addBook(Librarian librarian)
+            {
+                try
+                {
+                    Console.Clear();
+                    Console.WriteLine("Add Books to Library");
+                    Console.WriteLine();
+                    Console.WriteLine();
+                    Console.Write("\tBook Id: ");
+                    string id = Console.ReadLine();
+
+                    Console.Write("\tBook Title: ");
+                    string title = Console.ReadLine();
+
+                    Console.Write("\tBook ISBN: ");
+                    string isbn = Console.ReadLine();
+
+                    Console.Write("\tBook Author: ");
+                    string author = Console.ReadLine();
+
+                    Console.Write("\tPublished Year: ");
+                    int publishedYear = int.Parse(Console.ReadLine());
+
+                    Console.Write("Enter Number of Book Copies: ");
+                    int copies = int.Parse(Console.ReadLine());
+
+                    // calling add new book method from library object
+                    library.addNewBook(id, title, isbn, author, publishedYear, copies);
+
+                }
+                catch
+                {
+                    // Display error message
+                    invalidInputMessage();
+                }
+            }
+
+            // Remove book interface
+            void removeBook(Librarian librarian)
+            {
+                Console.Clear();
+                Console.WriteLine("Remove Books from Library");
+                Console.WriteLine();
+                Console.WriteLine();
+                Console.Write("\tEnter Book Id: ");
+                string id = Console.ReadLine();
+                Console.WriteLine();
+
+                // calling remove book method from library object
+                library.removeBook(id);
+            }
+
+            // Edit book details interface
+            void editBookDetails(Librarian librarian)
+            {
+                try
+                {
+                    Console.Clear();
+                    Console.WriteLine("Edit Book Details");
+                    Console.WriteLine();
+                    Console.WriteLine();
+                    Console.WriteLine("Enter book id to edit details...");
+                    Console.WriteLine();
+
+                    // Get book details to edit
+                    Console.Write("\tBook Id: ");
+                    string id = Console.ReadLine();
+                    Console.Write("\tBook Title: ");
+                    string title = Console.ReadLine();
+                    Console.Write("\tBook ISBN: ");
+                    string isbn = Console.ReadLine();
+                    Console.Write("\tBook Author: ");
+                    string author = Console.ReadLine();
+                    Console.Write("\tPublished Year: ");
+                    int publishedYear = int.Parse(Console.ReadLine());
+                    Console.Write("\tNumber of Book Copies: ");
+
+                    int copies = int.Parse(Console.ReadLine());
+
+                    // Check if the inputs are validated
+                    if (id.Trim() != "" && title.Trim() != "" && isbn.Trim() != "" && author.Trim() != "")
+                    {
+                        // calling edit book details method from library object
+                        library.editBookDetails(id, title, isbn, author, publishedYear, copies);
+                    }
+                    else
+                    {
+                        // Display error message
+                        invalidInputMessage();
+                    }
+                }
+                catch
+                {
+                    // Display error message
+                    Console.WriteLine("Please enter valid information!");
+                    continueMessage();
+                }
             }
 
             // Admin's manage members interface
-            void ManageMembers()
+            void ManageMembers(Librarian librarian)
             {
+                // Initialize manage member option
+                int manageMemberOpt = 0;
+                do
+                {
+                    try
+                    {
+                        Console.Clear();
+                        // Display manage member menu
+                        Console.WriteLine("Manage Members...");
+                        Console.WriteLine();
+                        Console.WriteLine("1. Add Member");
+                        Console.WriteLine("2. Remove Member");
+                        Console.WriteLine("3. Edit Member Details");
+                        Console.WriteLine("4. Back");
+                        Console.WriteLine();
+                        Console.Write("Select an option: ");
+                        manageMemberOpt = int.Parse(Console.ReadLine());
+                        // Switch case for user choice
+                        switch (manageMemberOpt)
+                        {
+                            case 1:
+                                // Calling add member method
+                                addMember(librarian);
+                                break;
 
+                            case 2:
+                                // Calling remove member method
+                                removeMember(librarian);
+                                break;
+
+                            case 3:
+                                // Calling edit member method
+                                editMemberDetails(librarian);
+                                break;
+
+                            case 4:
+                                Console.WriteLine();
+                                // Display exiting message
+                                exitingMessage("Returning to main menu");
+                                break;
+
+                            default:
+                                // Display error message
+                                invalidInputMessage();
+                                break;
+                        }
+                    }
+                    catch
+                    {
+                        // Display error message
+                        invalidInputMessage();
+                    }
+
+                } while (manageMemberOpt != 4);
+
+            }
+
+            // Add member interface
+            void addMember(Librarian librarian)
+            {
+                try
+                {
+                    Console.Clear();
+                    Console.WriteLine("Add Member to Library");
+                    Console.WriteLine();
+                    Console.WriteLine();
+                    Console.Write("\tMember Id: ");
+                    string id = Console.ReadLine();
+
+                    Console.Write("\tUser Name: ");
+                    string username = Console.ReadLine();
+
+                    Console.Write("\tPassword: ");
+                    string password = Console.ReadLine();
+
+                    Console.Write("\tFirst Name: ");
+                    string firstName = Console.ReadLine();
+
+                    Console.Write("\tLast Name: ");
+                    string lastName = Console.ReadLine();
+
+                    // calling add new member method from library object
+                    librarian.addNewMember(id, username, password, firstName, lastName);
+                }
+                catch
+                {
+                    // Display error message
+                    invalidInputMessage();
+                }
+            }
+
+            // Remove member interface
+            void removeMember(Librarian librarian)
+            {
+                Console.Clear();
+                Console.WriteLine("Remove Member from Library");
+                Console.WriteLine();
+                Console.WriteLine();
+                Console.Write("\tEnter Member Id: ");
+                string id = Console.ReadLine();
+                Console.WriteLine();
+
+                // calling remove member method from library object
+                librarian.deleteMemberDetail(id);
+            }
+
+            // Edit member details interface
+            void editMemberDetails(Librarian librarian)
+            {
+                try
+                {
+                    Console.Clear();
+                    Console.WriteLine("Edit Member Details");
+                    Console.WriteLine();
+                    Console.WriteLine();
+                    Console.WriteLine("Enter member id to edit details...");
+                    Console.WriteLine();
+
+                    // Get member details to edit
+                    Console.Write("\tMember Id: ");
+                    string id = Console.ReadLine();
+                    Console.Write("\tFirst Name: ");
+                    string firstName = Console.ReadLine();
+                    Console.Write("\tLast Name: ");
+                    string lastName = Console.ReadLine();
+
+                    // Check if the inputs are validated
+                    if (id.Trim() != "" && firstName.Trim() != "" && lastName.Trim() != "")
+                    {
+                        // calling edit member details method from library object
+                        librarian.editMemberDetail(id, firstName, lastName);
+                    }
+                    else
+                    {
+                        // Display error message
+                        invalidInputMessage();
+                    }
+                }
+                catch
+                {
+                    // Display error message
+                    Console.WriteLine("Please enter valid information!");
+                    continueMessage();
+                }
             }
 
             // Borrow Book interface
@@ -451,20 +803,23 @@ namespace LMS
                 Console.WriteLine("Borrow Books");
                 Console.WriteLine();
                 Console.Write("\tEnter Book ISBN: ");
+
                 string bookISBN = Console.ReadLine();
                 if (bookISBN.Replace(" ", "").Trim() != "")
                 {
+                    // calling borrow book method from library object
                     member.borrowBook(bookISBN);
                 }
                 else
                 {
+                    // Display error message
                     Console.WriteLine();
                     invalidInputMessage();
-                    continueMessage();
                 }
             }
 
-            void issueBookByLibrarian(Librarian librarian)
+            void issueBookByLibrarian
+                (Librarian librarian)
             {
                 Console.WriteLine();
                 Console.WriteLine("Borrow Books");
@@ -482,7 +837,6 @@ namespace LMS
                 {
                     Console.WriteLine();
                     invalidInputMessage();
-                    continueMessage();
                 }
             }
 
@@ -524,7 +878,6 @@ namespace LMS
                 {
                     Console.WriteLine();
                     invalidInputMessage();
-                    continueMessage();
                 }
             }
 
@@ -539,7 +892,7 @@ namespace LMS
                 {
                     displayBookDetails(book);
                 }
-
+                Console.WriteLine();
                 continueMessage();
             }
         }
@@ -618,7 +971,7 @@ namespace LMS
         }
 
         // Customized Book details output
-         static void displayBookDetails(Book book)
+        static void displayBookDetails(Book book)
         {
             Console.WriteLine($"Id: {book.Id}");
             Console.WriteLine($"Title: {book.Title}");

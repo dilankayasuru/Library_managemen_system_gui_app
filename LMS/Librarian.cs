@@ -15,7 +15,7 @@ public class Librarian : User
         this.IsAdmin = true;
     }
 
-
+    // Add new book to the library database
     public List<Member> getAllMembers()
     {
         List<Member> members = new List<Member>();
@@ -27,14 +27,14 @@ public class Librarian : User
 
         return members;
     }
-
+    // Add new book to the library database 
     public void addNewMember(string id, string username, string password, string firstName, string lastname)
     {
         Member member = new Member(id, username, password, firstName, lastname);
         LibraryDatabase.insertRecord<User>("Users", member);
         MessageBox.Show("Member added successfully", "Member Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
     }
-
+    // Edit member details
     public void editMemberDetail(string id, string firstName, string lastName)
     {
         Member member = LibraryDatabase.getRecordBy<User>("Users", id) as Member;
@@ -44,10 +44,10 @@ public class Librarian : User
 
         LibraryDatabase.updateRecord<User>("Users", id, member);
     }
-
+    // Delete member from the database
     public void deleteMemberDetail(string id)
     {
-
+        // get member by id
         Member member = LibraryDatabase.getRecordBy<Member>("Users", id);
 
         if (member.BorrowedBooksISBN.Count > 0)
@@ -69,6 +69,7 @@ public class Librarian : User
     {
         try
         {
+            // get member by id
             var targetMember = LibraryDatabase.getRecordBy<User>("Users", memberId);
             Book book = LibraryDatabase.getRecordBy<Book>("ISBN", isbn, "Books");
 
@@ -78,6 +79,7 @@ public class Librarian : User
             }
             else
             {
+                // check if the member has already borrowed the book or the number of borrowed books limit exceeded
                 Member member = targetMember as Member;
                 if (member.BorrowedBooksISBN.Contains(book.ISBN) || member.BorrowedBooksISBN.Count >= 2)
                 {
@@ -105,6 +107,7 @@ public class Librarian : User
     {
         try
         {
+            // get member by id
             var targetMember = LibraryDatabase.getRecordBy<User>("Users", memberId);
             Book book = LibraryDatabase.getRecordBy<Book>("ISBN", isbn, "Books");
             if (targetMember is Member)

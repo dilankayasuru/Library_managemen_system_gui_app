@@ -73,7 +73,6 @@ namespace LMS.Forms
                     else
                     {
                         library.addNewBook(this.bookIdTxt.Text, this.titleTxt.Text, this.isbnTxt.Text, this.authorTxt.Text, publishedYear, numofcopies);
-                        MessageBox.Show("Book Added successfully!", "New Book Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         clearFields();
                     }
                 }

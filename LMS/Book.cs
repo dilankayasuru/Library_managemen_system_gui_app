@@ -9,6 +9,7 @@ using System.Windows.Forms;
 
 public class Book
 {
+    // Book class properties
     string id;
     string title;
     string isbn;
@@ -18,6 +19,7 @@ public class Book
     int copies;
     List<String> borrowedMemberByID;
 
+    // Getters and Setters
     [BsonId]
     [BsonRepresentation(BsonType.String)]
     public string Id
@@ -62,6 +64,7 @@ public class Book
         { return copies; }
         set 
         { 
+            // Automatically set availability by copies
             copies = value; 
             checkAvailability();
             if (copies <= 0) this.Availability = false;
@@ -85,7 +88,7 @@ public class Book
         Copies = copies;
         BorrowedMemberByID = new List<String>();
     }
-
+    // Check availability by the number of copies
     public bool checkAvailability()
     {
         if (this.copies <= 0)
@@ -100,12 +103,15 @@ public class Book
         }
     }
 
+    // Borrow book and add the member to the borrowedMemberByID list
     public bool borrowBook(Member member)
     {
         Member borrowingMember = member;
         if (availability)
         {
+          
             this.Copies--;
+            // Add the member to the borrowedMemberByID list
             borrowedMemberByID.Add(member.Id);
             borrowingMember.BorrowedBooksISBN.Add(this.ISBN);
             LibraryDatabase.updateRecord<Book>("Books", this.id, this);
@@ -114,17 +120,21 @@ public class Book
         }
         else
         {
+            // Show a message box
             MessageBox.Show($"Requested book is not available!", "Unavailable", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return false;
         }
     }
 
+    // Return book
     public bool returnBook(Member member)
     {
         Member returningMember = member;
         if (this.borrowedMemberByID.Contains(member.Id))
         {
+            // Increase the number of copies
             this.Copies++;
+            // Remove the member from the borrowedMemberByID list
             borrowedMemberByID.Remove(member.Id);
             returningMember.BorrowedBooksISBN.Remove(this.ISBN);
             LibraryDatabase.updateRecord<Book>("Books", this.id, this);
@@ -133,6 +143,7 @@ public class Book
         }
         else
         {
+            // Show a message box
             MessageBox.Show($"Book is not borrowed by Member!", "Not borrowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return false;
         }

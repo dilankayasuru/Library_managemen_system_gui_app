@@ -23,17 +23,9 @@ namespace LMS.Forms
             switchTabs(new MemberHome(activeUser));
 
             this.FormClosing += MemberWindow_FormClosing;
-            this.FormClosed += MemberWindow_FormClosed;
         }
 
         private void MemberWindow_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (MessageBox.Show("Are you really want to close the Application", "Close", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
-            {
-                e.Cancel = true;
-            }
-        }
-        private void MemberWindow_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
         }

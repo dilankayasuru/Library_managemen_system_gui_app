@@ -17,7 +17,7 @@ public class Library
         this.bookCollection = getAllBooks();
         this.members = getAllMembers();
     }
-
+    // Getters and Setters
     public List<Book> BookCollection
     {
         get { return bookCollection; }
@@ -32,6 +32,7 @@ public class Library
 
     public List<Book> getAllBooks()
     {
+        // Get all books from the database
         this.bookCollection = LibraryDatabase.getRecords<Book>("Books");
 
         return this.bookCollection;
@@ -41,22 +42,28 @@ public class Library
     {
         try
         {
+            // Create a new book object
             Book book = new Book(id, title, iSBN, author, publishhedYear, copies);
+            // Insert the book into the database
             LibraryDatabase.insertRecord<Book>("Books", book);
+            MessageBox.Show("Book Added successfully!", "New Book Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
         catch
         {
+            // If the book already exists, show a message box
             MessageBox.Show("Book already exists!", "Duplicate ID!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
     }
 
-    private List<Member> getAllMembers()
+    public List<Member> getAllMembers()
     {
+        // Get all members from the database
         List<Member> members = new List<Member>();
         var users = LibraryDatabase.getRecords<User>("Users").FindAll(u => u is Member).ToList();
         foreach (var user in users)
         {
+            // Add the user to the members list
             members.Add(user as Member);
         }
         return members;
@@ -64,14 +71,17 @@ public class Library
 
     public void removeBook(string id)
     {
+        // Get the book by its ID
         Book book = LibraryDatabase.getRecordBy<Book>("Books", id);
-
+        // If the book is being borrowed by a member, show a message box
         if (book.BorrowedMemberByID.Count > 0)
         {
+            // Show a message box
             MessageBox.Show($"Book can not delete since {book.BorrowedMemberByID.Count} members are being borrow this book!", "Delete Prohibited!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
         else if (book != null)
         {
+            // If the book is not being borrowed, delete the book from the database
             LibraryDatabase.deleteRecord<Book>("Books", id);
             MessageBox.Show("Book Deleted successfully!", "Delete", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
@@ -80,13 +90,15 @@ public class Library
             MessageBox.Show("Book not found!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
-
+    // Edit book details
     public void editBookDetails(string id, string title, string isbn, string author, int publishedYear, int copies)
     {
         try
         {
+            // Get the book by its ID
             Book book = LibraryDatabase.getRecordBy<Book>("Books", id);
 
+            // If the number of copies is greater than the number of members the book is borrowed by, update the book details
             if (book.BorrowedMemberByID.Count <= copies)
             {
                 book.Title = title;
@@ -102,6 +114,12 @@ public class Library
                 MessageBox.Show("Number of copies can not be less than the number of members the book is borrowed!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        // If the book is not found, show a message box
+        catch (NullReferenceException)
+        {
+            MessageBox.Show("Book not found!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+        // If the book already exists, show a message box
         catch (MongoDuplicateKeyException)
         {
             MessageBox.Show("Please enter unique ISBN number and Book ID", "Duplicate ID!", MessageBoxButtons.OK, MessageBoxIcon.Error);

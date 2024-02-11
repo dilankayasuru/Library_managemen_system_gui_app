@@ -52,7 +52,7 @@ namespace LMS.Forms
 
             issuedBookCount.Text = books.FindAll(b => (b.BorrowedMemberByID.Count > 0)).Count.ToString();
 
-            totalMemberCount.Text = library.getAllBooks().Count.ToString();
+            totalMemberCount.Text = library.getAllMembers().Count.ToString();
 
             MemberHome.centerLable(this.totalBookPanel, this.totalBookCount, 10);
             MemberHome.centerLable(this.availableBookPanel, this.availableCount, 10);

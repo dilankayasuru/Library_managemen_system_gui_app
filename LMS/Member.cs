@@ -27,6 +27,7 @@ public class Member : User
     {
         try
         {
+            // Check if the book is already borrowed by the user
             if (this.borrowedBooksISBN.Contains(isbn))
             {
                 MessageBox.Show("This book has been already borrowed by the user!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -37,12 +38,14 @@ public class Member : User
             }
             else
             {
+                // Get the book by ISBN
                 Book book = LibraryDatabase.getRecordBy<Book>("ISBN", isbn, "Books");
                 if (book != null)
                 {
                     bool isBookBorrowed = book.borrowBook(this);
                     if (isBookBorrowed)
                     {
+                        // Add the book to the user's borrowed books list
                         this.transactionRecord(isbn, Transaction_Type.Borrow_Book);
                         MessageBox.Show("Book Issued Successfully!", "Book Issued", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -64,18 +67,21 @@ public class Member : User
     {
         try
         {
+            // Check if the user has borrowed the book
             if (this.borrowedBooksISBN.Contains(isbn))
             {
                 Book book = LibraryDatabase.getRecordBy<Book>("ISBN", isbn, "Books");
                 bool isBookBorrowed = book.returnBook(this);
                 if (isBookBorrowed)
                 {
+                    // Remove the book from the user's borrowed books list
                     this.transactionRecord(isbn, Transaction_Type.Return_Book);
                     MessageBox.Show("Book Returned Successfully!", "Book Returned", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             else
             {
+                // Show a message box
                 MessageBox.Show("Member has not borrowed this Book!", "Book not Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -86,6 +92,7 @@ public class Member : User
         }
     }
 
+    // Show the borrowed books
     public List<Book> showBorrowedBooks()
     {
         try
@@ -101,6 +108,7 @@ public class Member : User
         }
         catch (Exception ex)
         {
+            // Show a message box
             MessageBox.Show($"An error occurred!\n{ex.Message}", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return null;
         }

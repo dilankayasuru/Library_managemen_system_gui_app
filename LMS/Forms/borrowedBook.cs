@@ -17,7 +17,6 @@ namespace LMS.Forms
         {
             InitializeComponent();
             this.book = book;
-            this.borrowedDate.Value = new DateTime(2024, 10, 10);
         }
 
         private void borrowedBook_Load(object sender, EventArgs e)
@@ -27,8 +26,6 @@ namespace LMS.Forms
             this.authorTxt.Text = book.Author;
             this.publishedYearTxt.Text = book.PublishhedYear.ToString();
 
-            this.returnDate.Visible = false;
-            this.borrowedDate.Visible = false;
         }
     }
 }

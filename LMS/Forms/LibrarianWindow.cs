@@ -23,18 +23,10 @@ namespace LMS.Forms
             switchTabs(new LibrarianHome(library, activeUser));
 
 
-            this.FormClosing += LibrarianWindow_FormClosing;
-            this.FormClosed += LibrarianWindow_FormClosed;
+            this.FormClosing += LibrarianWindow_FormClosed;
         }
 
-        private void LibrarianWindow_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (MessageBox.Show("Are you realy want to Exit the Application", "Close", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
-            {
-                e.Cancel = true;
-            }
-        }
-        private void LibrarianWindow_FormClosed(object sender, FormClosedEventArgs e)
+        private void LibrarianWindow_FormClosed(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
         }

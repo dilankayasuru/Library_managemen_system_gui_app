@@ -13,6 +13,7 @@ static class LibraryDatabase
     // Insert One docuement
     static public void insertRecord<Type>(string table, Type record)
     {
+        // Insert a record into the database
         var collection = database.GetCollection<Type>(table);
         collection.InsertOne(record);
     }
@@ -20,7 +21,7 @@ static class LibraryDatabase
     // Read documents
     public static List<Type> getRecords<Type>(string table)
     {
-        //var collection = new MongoClient("mongodb://localhost:27017").GetDatabase("Library").GetCollection<Type>(table);
+        // Get all records from the database
         var collection = database.GetCollection<Type>(table);
         return collection.Find(new BsonDocument()).ToList();
     }
@@ -28,12 +29,14 @@ static class LibraryDatabase
     // Read document by id
     public static classType getRecordBy<classType>(string table, string id)
     {
+        // Get a record by id
         var collection = database.GetCollection<classType>(table);
         var filter = Builders<classType>.Filter.Eq("Id", id);
 
         return collection.Find(filter).FirstOrDefault();
     }
 
+    // Read document by filter
     public static classType getRecordBy<classType>(string filterKey, string keyword, string table)
     {
         var collection = database.GetCollection<classType>(table);

@@ -67,6 +67,7 @@ public abstract class User
         LastName = lastName;
     }
 
+    // User login
     internal bool userLogin(string username, string password)
     {
         if (this.UserName == username && this.password == password)
@@ -79,16 +80,20 @@ public abstract class User
         }
     }
 
+    // Borrow the book
     public abstract void borrowBook(string isbn, string memberID);
 
+    // Return the book
     public abstract void returnBook(string isbn, string memberID);
-
+    
+    // Record the transaction
     public void transactionRecord(string ISBN, Transaction_Type transactionType)
     {
         Book book = LibraryDatabase.getRecordBy<Book>("ISBN", ISBN, "Books");
         Transaction transaction = new Transaction(book, this as Member, transactionType);
         LibraryDatabase.insertRecord<Transaction>("Transaction", transaction);
     }    
+    // overload transactionRecord method for Librarian
     public void transactionRecord(string ISBN, Transaction_Type transactionType, Member member)
     {
         Book book = LibraryDatabase.getRecordBy<Book>("ISBN", ISBN, "Books");
