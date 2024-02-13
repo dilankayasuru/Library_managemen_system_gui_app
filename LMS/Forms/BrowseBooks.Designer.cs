@@ -45,7 +45,7 @@
             this.headerText.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.headerText.Location = new System.Drawing.Point(18, 16);
             this.headerText.Name = "headerText";
-            this.headerText.Size = new System.Drawing.Size(140, 30);
+            this.headerText.Size = new System.Drawing.Size(180, 37);
             this.headerText.TabIndex = 0;
             this.headerText.Text = "Browse Books";
             // 
@@ -58,7 +58,7 @@
             "ISBN"});
             this.filterComboBox.Location = new System.Drawing.Point(269, 58);
             this.filterComboBox.Name = "filterComboBox";
-            this.filterComboBox.Size = new System.Drawing.Size(68, 29);
+            this.filterComboBox.Size = new System.Drawing.Size(68, 36);
             this.filterComboBox.TabIndex = 3;
             this.filterComboBox.SelectedIndexChanged += new System.EventHandler(this.filterComboBox_SelectedIndexChanged);
             // 
@@ -73,7 +73,7 @@
             this.searchTxt.Cursor = System.Windows.Forms.Cursors.Default;
             this.searchTxt.Location = new System.Drawing.Point(345, 54);
             this.searchTxt.Name = "searchTxt";
-            this.searchTxt.Size = new System.Drawing.Size(437, 36);
+            this.searchTxt.Size = new System.Drawing.Size(437, 41);
             this.searchTxt.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
             this.searchTxt.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | Krypton.Toolkit.PaletteDrawBorders.Left) 
@@ -95,7 +95,6 @@
             this.booksDataGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.booksDataGridView.Location = new System.Drawing.Point(15, 159);
             this.booksDataGridView.Name = "booksDataGridView";
-            this.booksDataGridView.ReadOnly = true;
             this.booksDataGridView.RowHeadersWidth = 51;
             this.booksDataGridView.Size = new System.Drawing.Size(1020, 554);
             this.booksDataGridView.TabIndex = 0;
@@ -122,7 +121,7 @@
             this.filterLbl.AutoSize = true;
             this.filterLbl.Location = new System.Drawing.Point(19, 124);
             this.filterLbl.Name = "filterLbl";
-            this.filterLbl.Size = new System.Drawing.Size(73, 21);
+            this.filterLbl.Size = new System.Drawing.Size(91, 28);
             this.filterLbl.TabIndex = 6;
             this.filterLbl.Text = "Filter By: ";
             // 
@@ -137,13 +136,13 @@
             "Show Unavailable Books"});
             this.availbilityFilterComboBox.Location = new System.Drawing.Point(98, 120);
             this.availbilityFilterComboBox.Name = "availbilityFilterComboBox";
-            this.availbilityFilterComboBox.Size = new System.Drawing.Size(186, 28);
+            this.availbilityFilterComboBox.Size = new System.Drawing.Size(186, 33);
             this.availbilityFilterComboBox.TabIndex = 7;
             this.availbilityFilterComboBox.SelectedIndexChanged += new System.EventHandler(this.availbilityFilterComboBox_SelectedIndexChanged);
             // 
             // BrowseBooks
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(246)))));
             this.Controls.Add(this.availbilityFilterComboBox);

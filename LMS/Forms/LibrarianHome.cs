@@ -38,13 +38,14 @@ namespace LMS.Forms
 
             foreach (Book book in books)
             {
-                totalCopies += book.Copies;
+                totalCopies += book.Copies + book.BorrowedMemberByID.Count;
 
                 if (book.Availability)
                 {
                     availableCopies += book.Copies;
                 }
             }
+
 
             totalBookCount.Text = totalCopies.ToString();
 
